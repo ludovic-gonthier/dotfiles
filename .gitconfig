@@ -1,0 +1,23 @@
+[alias]
+	br=branch
+	ci=commit
+	co=checkout
+	st=status
+	stu=status -u
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lc = log ORIG_HEAD.. --stat --no-merges
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	undo = reset --hard HEAD^
+
+[core]
+	editor = vim
+
+[merge]
+	tool = vimdiff
+[rebase]
+    autosquash = true
+
+[user]
+	name = Ludovic Gonthier
+    email = gonthier.ludovic@gmail.com
+

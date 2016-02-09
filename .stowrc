@@ -1,0 +1,4 @@
+--ignore=Makefile
+--ignore=README.md
+--ignore=.stowrc
+--override=.*
