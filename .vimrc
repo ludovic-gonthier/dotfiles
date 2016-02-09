@@ -12,6 +12,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/taglist.vim'
 Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()
