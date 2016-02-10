@@ -21,6 +21,7 @@ filetype plugin indent on
 set background=dark
 colorscheme hybrid 
 
+set t_Co=256
 set autowrite                     " Automatically :write before running commands
 set clipboard=unnamed             " For OSX clipboard
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
