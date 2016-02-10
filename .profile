@@ -23,3 +23,9 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
+
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='screen-256color'
+else
+    export TERM='screen'
+fi
