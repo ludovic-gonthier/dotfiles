@@ -9,18 +9,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'jnurmine/Zenburn'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'w0ng/vim-hybrid'
 
 call vundle#end()
 filetype plugin indent on
 
-set background=dark
-colorscheme hybrid 
+colorscheme zenburn 
+
+let g:zenburn_force_dark_Background = 1
 
 set t_Co=256
 set autowrite                     " Automatically :write before running commands
@@ -66,7 +67,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 
 " set airline theme
-let g:airline_theme='tomorrow'
+let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch_prefix#enabled=1

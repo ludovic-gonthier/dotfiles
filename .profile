@@ -16,7 +16,7 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 if [ -e /usr/share/terminfo/x/xterm-256color ]; then
-    export TERM='screen-256color'
+    export TERM='xterm-256color'
 else
-    export TERM='screen'
+    export TERM='xterm'
 fi
