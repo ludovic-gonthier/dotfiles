@@ -8,10 +8,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'StanAngeloff/php.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'evidens/vim-twig'
+Plugin 'jnurmine/Zenburn'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'jnurmine/Zenburn'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/taglist.vim'
@@ -19,11 +21,13 @@ Plugin 'vim-scripts/taglist.vim'
 call vundle#end()
 filetype plugin indent on
 
-colorscheme zenburn 
-
-let g:zenburn_force_dark_Background = 1
+let g:zenburn_high_Contrast = 1
 
 set t_Co=256
+set background=dark               " Dark bg
+
+colors zenburn 
+
 set autowrite                     " Automatically :write before running commands
 set clipboard=unnamed             " For OSX clipboard
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
@@ -47,7 +51,6 @@ set wildmenu                      " Enhanced command line completion.
 syntax enable
 
 set antialias
-set background=dark               " Dark bg
 set guifont=Hack:h14              " Define hack as font, powerline
 set cursorline                    " Highlight current line
 set ruler                         " Display ruler

@@ -1,4 +1,4 @@
-PACKAGES := git stow vim tmux
+PACKAGES := git stow vim tmux pip
 SHELL := /bin/bash
 
 .PHONY: install 
@@ -27,6 +27,9 @@ install-vim:
 
 .PHONY: install-powerline
 install-powerline:
+	$(info   --> Installing Powerline)
+	@pip install --user git+git://github.com/Lokaltog/powerline
+	$(info   --> Installing Powerline fonts)
 	@wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
 	@sudo mv PowerlineSymbols.otf /usr/share/fonts/
 	@sudo fc-cache -vf
@@ -34,7 +37,8 @@ install-powerline:
 
 .PHONY: install-oh-my-zsh
 install-oh-my-zsh:
-	@sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"	
+	$(info   --> Installing Oh My Zsh)
+	wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sudo sh	
 
 .PHONY: uninstall
 uninstall:
