@@ -8,18 +8,28 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'StanAngeloff/php.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'evidens/vim-twig'
+Plugin 'jnurmine/Zenburn'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'w0ng/vim-hybrid'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
 
 call vundle#end()
 filetype plugin indent on
 
-set background=dark
-colorscheme hybrid 
+let g:zenburn_high_Contrast = 1
+
+set t_Co=256
+set background=dark               " Dark bg
+
+colors zenburn 
 
 set autowrite                     " Automatically :write before running commands
 set clipboard=unnamed             " For OSX clipboard
@@ -44,7 +54,6 @@ set wildmenu                      " Enhanced command line completion.
 syntax enable
 
 set antialias
-set background=dark               " Dark bg
 set guifont=Hack:h14              " Define hack as font, powerline
 set cursorline                    " Highlight current line
 set ruler                         " Display ruler
@@ -64,7 +73,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 
 " set airline theme
-let g:airline_theme='tomorrow'
+let g:airline_theme='zenburn'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch_prefix#enabled=1
@@ -105,6 +114,11 @@ let g:syntastic_json_checkers = ['jsonlint']
 " Better syntastic symbols
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
+
+" CTAGS - vim-easytags
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 1
+let g:easytags_opts = ['--exclude=.git']
 
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
