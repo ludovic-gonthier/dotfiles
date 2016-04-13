@@ -12,11 +12,14 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'evidens/vim-twig'
 Plugin 'jnurmine/Zenburn'
-Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/taglist.vim'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -111,6 +114,11 @@ let g:syntastic_json_checkers = ['jsonlint']
 " Better syntastic symbols
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
+
+" CTAGS - vim-easytags
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 1
+let g:easytags_opts = ['--exclude=.git']
 
 " Commenting blocks of code.
 autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
