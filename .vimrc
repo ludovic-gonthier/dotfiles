@@ -59,6 +59,7 @@ set cursorline                    " Highlight current line
 set ruler                         " Display ruler
 set relativenumber                " Set relative number for fast dd/yy
 set number
+set backspace=2
 
 " show existing tab with 4 spaces width
 set tabstop=4
