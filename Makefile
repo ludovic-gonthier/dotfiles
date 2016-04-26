@@ -1,4 +1,4 @@
-PACKAGES := git stow vim tmux pip
+PACKAGES := git stow vim tmux pip zsh ctags
 SHELL := /bin/bash
 
 .PHONY: install 
