@@ -8,18 +8,19 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'evidens/vim-twig'
 Plugin 'jnurmine/Zenburn'
 Plugin 'majutsushi/tagbar'
+Plugin 'othree/yajs.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -31,6 +32,7 @@ set background=dark               " Dark bg
 
 colors zenburn 
 
+set backspace=indent,eol,start
 set autowrite                     " Automatically :write before running commands
 set clipboard=unnamed             " For OSX clipboard
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
