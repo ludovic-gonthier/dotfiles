@@ -1,0 +1,6 @@
+# List of docker's aliases
+
+alias dc="docker-compose"
+alias dcb="docker-compose build"
+alias dcr="docker-compose run"
+alias dcu="docker-compose up"
