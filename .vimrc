@@ -139,4 +139,4 @@ noremap <silent> <leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader
 :nnoremap <space> za
 
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
-command TagRefresh execute ":Silent !ctags -R . > /dev/null 2>&1 &"
+command! TagRefresh execute ":Silent !ctags -R . > /dev/null 2>&1 &"
