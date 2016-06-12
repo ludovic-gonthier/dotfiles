@@ -16,60 +16,65 @@ Plugin 'evidens/vim-twig'
 Plugin 'jnurmine/Zenburn'
 Plugin 'majutsushi/tagbar'
 Plugin 'othree/yajs.vim'
+Plugin 'scrooloose/NERDTree'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'sniphpets/sniphpets'
+Plugin 'sniphpets/sniphpets-common'
+Plugin 'sniphpets/sniphpets-phpunit'
 
 call vundle#end()
+
 filetype plugin indent on
+
+syntax enable
+
+" Color theme
+set t_Co=256
+set background=dark
 
 let g:zenburn_high_Contrast = 1
 
-set t_Co=256
-set background=dark               " Dark bg
-
 colors zenburn 
 
-set backspace=indent,eol,start
+" Global configuration
+set antialias
 set autowrite                     " Automatically :write before running commands
+set backspace=2
+set backspace=indent,eol,start
 set clipboard=unnamed             " For OSX clipboard
+set cursorline                    " Highlight current line
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
 set foldmethod=indent
+set guifont=Hack:h14              " Define hack as font, powerline
 set hidden                        " Handle multiple buffers better.
 set history=1000                  " Store lots of :cmdline history
 set hlsearch                      " Highlight search results
 set incsearch                     " Makes search act like in modern browsers
-set lazyredraw                    " Redraw only when we need to.
+set laststatus=2
 set laststatus=2                  " Always display the status line
-set novisualbell                  "
+set lazyredraw                    " Redraw only when we need to.
+set listchars=tab:▸\ ,eol:¬,trail:·,extends:>,precedes:<
 set noerrorbells                  " No error bells
-set showmode                      " Show mode -- INSERT --
+set novisualbell                  "
+set number
+set relativenumber                " Set relative number for fast dd/yy
+set ruler                         " Display ruler
+set shiftwidth=4 " when indenting with '>', use 4 spaces width
 set showcmd                       " Show commands
 set showmatch                     " Highlight matching [{()}]
+set showmode                      " Show mode -- INSERT --
+set tabstop=4 " show existing tab with 4 spaces width
 set ttyfast
-set undofile                      " Persistent undo
 set undodir=~/.vim/undofiles      " Do not add ~un files everywhere I go
-set wildmode=list:longest         " Complete files like a shell.
+set undofile                      " Persistent undo
 set wildmenu                      " Enhanced command line completion.
-syntax enable
-
-set antialias
-set guifont=Hack:h14              " Define hack as font, powerline
-set cursorline                    " Highlight current line
-set ruler                         " Display ruler
-set relativenumber                " Set relative number for fast dd/yy
-set number
-set backspace=2
-
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
-
+set wildmode=list:longest         " Complete files like a shell.
 
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1
@@ -84,19 +89,16 @@ let g:airline#extensions#branch#empty_message = ''
 let g:airline#extensions#syntastic#enabled=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
-  endif
+endif
 
-  " unicode symbols
-  let g:airline_left_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_symbols.linenr = '¶'
-  let g:airline_symbols.branch = '⎇'
-  let g:airline_symbols.paste = 'Þ'
-  let g:airline_symbols.whitespace = 'Ξ'
-  let g:airline_symbols.readonly = '🔒'
-
-set laststatus=2
-set listchars=tab:▸\ ,eol:¬,trail:·,extends:>,precedes:<
+" unicode symbols
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_symbols.readonly = '🔒'
 
 " Syntastic configuration
 set statusline+=%#warningmsg#
@@ -108,7 +110,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Syntax Checker
 let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 let g:syntastic_javascript_checkers = ['eslint']
@@ -118,25 +119,21 @@ let g:syntastic_json_checkers = ['jsonlint']
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
-" CTAGS - vim-easytags
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 1
-let g:easytags_opts = ['--exclude=.git']
-
-" Commenting blocks of code.
-autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
-autocmd FileType sh,ruby,python let b:comment_leader = '# '
-autocmd FileType conf,fstab let b:comment_leader = '# '
-autocmd FileType tex let b:comment_leader = '% '
-autocmd FileType mail let b:comment_leader = '> '
-autocmd FileType vim let b:comment_leader = '" '
-noremap <silent> <leader>cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
-noremap <silent> <leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
+" Snippets configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Key Bindings
 :vnoremap <F9> :sort u<cr>
-" Toggle folding
-:nnoremap <space> za
 
+" Toggle folding
+:nnoremap <space> za 
+
+" Custom commands
+
+" Silently execute a function
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
+
+" Refresh in background the ctags list
 command! TagRefresh execute ":Silent !ctags -R . > /dev/null 2>&1 &"
