@@ -15,6 +15,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'evidens/vim-twig'
 Plugin 'jnurmine/Zenburn'
 Plugin 'majutsushi/tagbar'
+Plugin 'mileszs/ack.vim'
 Plugin 'othree/yajs.vim'
 Plugin 'scrooloose/NERDTree'
 Plugin 'scrooloose/syntastic'
@@ -110,7 +111,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_json_checkers = ['jsonlint']
