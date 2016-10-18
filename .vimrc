@@ -16,6 +16,7 @@ Plugin 'evidens/vim-twig'
 Plugin 'jnurmine/Zenburn'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
+Plugin 'mxw/vim-jsx'
 Plugin 'othree/yajs.vim'
 Plugin 'scrooloose/NERDTree'
 Plugin 'scrooloose/syntastic'
@@ -113,8 +114,11 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint', 'npm run lint']
 let g:syntastic_json_checkers = ['jsonlint']
+
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
 
 " Better syntastic symbols
 let g:syntastic_error_symbol = '✗'
