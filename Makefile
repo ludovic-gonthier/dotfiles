@@ -39,6 +39,9 @@ install-powerline:
 install-oh-my-zsh:
 	$(info   --> Installing Oh My Zsh)
 	wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sudo sh	
+	if [ ! -e ${HOME}/.aliases.local ]; then touch ${HOME}/.aliases.local; fi
+	if [ ! -e ${HOME}/.zshenv.local ]; then touch ${HOME}/.zshenv.local; fi
+	if [ ! -e ${HOME}/.zshrc.local ]; then touch ${HOME}/.zshrc.local; fi
 
 .PHONY: uninstall
 uninstall:
