@@ -18,8 +18,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/yajs.vim'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/NERDTree'
 Plugin 'scrooloose/syntastic'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -128,6 +130,10 @@ let g:syntastic_warning_symbol = '⚠'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" NERDTree configuration
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Key Bindings
 :vnoremap <F9> :sort u<cr>
