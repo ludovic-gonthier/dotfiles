@@ -8,6 +8,8 @@ install: requirements \
 	install-powerline \
 	install-oh-my-zsh
 	@stow -S -R . -t "${HOME}" -v
+	# Update fonts cache
+	@sudo fc-cache -vf
 
 .PHONY: install-tmux 
 install-tmux:
@@ -50,8 +52,13 @@ uninstall:
 .PHONY:	uninstall-tmux
 uninstall-tmux:
 	$(info --> Uninstall Tmux plugins)
-	[[ -d ${HOME}/.tmux/plugins ]] && \
-		rm -rf ${HOME}/.tmux/plugins
+	[[ -d ${HOME}/.tmux/plugins ]] && rm -rf ${HOME}/.tmux/plugins
+.PHONY:	uninstall-vim
+uninstall-vim:
+	$(info --> Uninstall Vim plugins)
+	#@[[ -d ${HOME}/.vim/biundle ]] && rm -rf ${HOME}/.vim/biundle
+	@[[ -e /usr/share/fonts/PowerlineSymbols.otf ]] && rm -rf /usr/share/fonts/PowerlineSymbols.otf
+	@[[ -d /etc/fonts/conf.d/10-powerline-symbols.conf ]] && rm -rf /etc/fonts/conf.d/10-powerline-symbols.conf
 
 define check_package
 @which $(package) >/dev/null ||\
