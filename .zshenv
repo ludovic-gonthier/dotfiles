@@ -1,4 +1,8 @@
-GITHUB_TOKEN="ff2cbe398d4dfb439fbddeab5273ec3d93fd01b9"
+# Ensure that a non-login, non-interactive shell has a defined environment.
+if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprofile"
+fi
+
 LANG="en_US.UTF-8"
 LC_COLLATE="en_US.UTF-8"
 LC_CTYPE="en_US.UTF-8"
@@ -18,6 +22,7 @@ PATH="$PATH:/usr/games"
 PATH="$PATH:/usr/local/games"
 PATH="$PATH:$HOME/bin"
 ZSH=${HOME}/.oh-my-zsh
+ZSH_THEME="agnoster"
 
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -26,6 +31,6 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d "$HOME/.zshenv.local" ] ; then
+if [ -f "$HOME/.zshenv.local" ] ; then
 	source "$HOME/.zshenv.local"
 fi

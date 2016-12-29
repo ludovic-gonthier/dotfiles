@@ -19,11 +19,13 @@ Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'othree/yajs.vim'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'scrooloose/NERDTree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'suan/vim-instant-markdown'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
 
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -67,8 +69,10 @@ set listchars=tab:▸\ ,eol:¬,trail:·,extends:>,precedes:<
 set noerrorbells                  " No error bells
 set novisualbell                  "
 set number
+set path+=**
 set relativenumber                " Set relative number for fast dd/yy
 set ruler                         " Display ruler
+set shell=zsh
 set shiftwidth=4 " when indenting with '>', use 4 spaces width
 set showcmd                       " Show commands
 set showmatch                     " Highlight matching [{()}]
@@ -78,7 +82,11 @@ set ttyfast
 set undodir=~/.vim/undofiles      " Do not add ~un files everywhere I go
 set undofile                      " Persistent undo
 set wildmenu                      " Enhanced command line completion.
-set wildmode=list:longest         " Complete files like a shell.
+set wildmode=longest,list,full    " Complete files like a shell.
+
+" Omni completion configuration
+setlocal omnifunc=syntaxcomplete#Complete
+let g:omni_syntax_group_include_php = 'php\w\+'
 
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1
@@ -129,7 +137,12 @@ let g:syntastic_warning_symbol = '⚠'
 " Snippets configuration
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+
+" NERDTres configuration
+" Auto-start vim if no file specify
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " NERDTree configuration
 autocmd StdinReadPre * let s:std_in=1
