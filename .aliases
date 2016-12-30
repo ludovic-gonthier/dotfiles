@@ -6,6 +6,6 @@ alias dce="docker-compose exec"
 alias dcr="docker-compose run"
 alias dcu="docker-compose up"
 
-if [ -d "$HOME/.aliases.local" ] ; then
+if [ -f "$HOME/.aliases.local" ] ; then
 	source "$HOME/.aliases.local"
 fi
