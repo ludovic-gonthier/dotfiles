@@ -160,4 +160,4 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
 
 " Refresh in background the ctags list
-command! TagRefresh execute ":Silent !ctags -R . > /dev/null 2>&1 &"
+command! RefreshTag execute ":Silent !ctags -R --exclude=@.ctagsignore . > /dev/null 2>&1 &"
