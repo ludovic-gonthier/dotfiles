@@ -17,6 +17,8 @@
 	tool = vimdiff
 [rebase]
     autosquash = true
+[tag]
+	sort = version:refname
 
 [user]
 	name = Ludovic Gonthier
