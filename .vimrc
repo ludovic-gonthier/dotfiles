@@ -12,17 +12,22 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'evidens/vim-twig'
+Plugin 'evidens/vim-twig' 
 Plugin 'jnurmine/Zenburn'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
+Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'othree/yajs.vim'
-Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/syntastic'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'tpope/tpope-vim-abolish'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -57,7 +62,7 @@ set clipboard=unnamed             " For OSX clipboard
 set cursorline                    " Highlight current line
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
 set foldmethod=indent
-set guifont=Hack:h14              " Define hack as font, powerline
+set guifont=Hack\ 14              " Define hack as font, powerline
 set hidden                        " Handle multiple buffers better.
 set history=1000                  " Store lots of :cmdline history
 set hlsearch                      " Highlight search results
@@ -118,7 +123,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -140,13 +145,21 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
 " NERDTres configuration
-" Auto-start vim if no file specify
+let g:NERDTreeShowHidden = 1 " Show hidden files
+let g:NERDTreeAutoDeleteBuffer = 1 " auto delete the buffer of the file you just deleted with NERDTree
+let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 0 " highlights the folder name
+let g:NERDTreeIgnore = ['\.swp$', '\.swo$']
+
+" Auto-start NERDTree if no file specify
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" NERDTree configuration
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" vim-devicons configuration
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
+
+" Higlight non-breaking spaces
+au VimEnter,BufWinEnter * syn match ErrorMsg " "
 
 " Key Bindings
 :vnoremap <F9> :sort u<cr>
@@ -160,4 +173,4 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
 
 " Refresh in background the ctags list
-command! RefreshTag execute ":Silent !ctags -R --exclude=@.ctagsignore . > /dev/null 2>&1 &"
+command! RefreshTag execute ":Silent !ctags -R . > /dev/null 2>&1 &"
