@@ -19,14 +19,15 @@ Plugin 'mileszs/ack.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'othree/yajs.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -119,6 +120,7 @@ let g:airline_symbols.readonly = '🔒'
 
 " Syntastic configuration
 set statusline+=%#warningmsg#
+set statusline+=%{fugitive#statusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
@@ -149,7 +151,7 @@ let g:NERDTreeShowHidden = 1 " Show hidden files
 let g:NERDTreeAutoDeleteBuffer = 1 " auto delete the buffer of the file you just deleted with NERDTree
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 0 " highlights the folder name
-let g:NERDTreeIgnore = ['\.swp$', '\.swo$']
+let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
 
 " Auto-start NERDTree if no file specify
 autocmd StdinReadPre * let s:std_in=1
