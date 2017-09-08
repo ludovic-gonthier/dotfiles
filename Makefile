@@ -19,7 +19,22 @@ install-tmux:
 
 .PHONY: install-vim
 install-vim:
-	$(info --> Configuring Vim)
+	$(info --> Installing Vim)
+	[[ -d ${HOME}/src/vim ]] || git clone git@github.com:vim/vim.git ${HOME}/src/vim/
+	$(info   --> Configuring Vim sources)
+	cd ${HOME}/src/vim
+	./configure --prefix=${HOME}\
+		--enable-pythoninterp=yes \
+		--with-python-config-dir=/usr/lib/python2.7/config-$(uname -m)-linux-gnu \
+		--with-features=huge \
+		--enable-rubyinterp=dynamic \
+		--enable-perlinterp=dynamic \
+	   	--enable-cscope
+	$(info   --> Compilling vim)
+	make && sudo make install
+	cd -
+
+	$(info --> Configuring Vim bundles)
 	$(info   --> Installing Vim-Vundle)
 	@mkdir -p ${HOME}/.vim/bundle
 	@mkdir -p ${HOME}/.vim/undofiles
