@@ -1,4 +1,5 @@
 [alias]
+	git=!exec git
 	br=branch
 	ci=commit
 	co=checkout
