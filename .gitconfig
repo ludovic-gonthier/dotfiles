@@ -10,18 +10,18 @@
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 	undo = reset --hard HEAD^
 	cleanup = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
-
+[commit]
+	verbose = true
 [core]
-	editor = vim
-
+	editor = vim +startinsert
 [merge]
 	tool = vimdiff
 [rebase]
     autosquash = true
+[sequence]
+	editor = vim
 [tag]
 	sort = version:refname
-
 [user]
 	name = Ludovic Gonthier
     email = gonthier.ludovic@gmail.com
-
