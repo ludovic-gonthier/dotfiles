@@ -47,7 +47,6 @@ set t_Co=256
 set background=dark
 
 let g:zenburn_high_Contrast = 1
-let g:mapleader = ','
 
 colors zenburn 
 
