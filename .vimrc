@@ -27,6 +27,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
+Plugin 'airblade/vim-gitgutter'
 
 
 " Snippets
@@ -135,6 +136,13 @@ let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
 " Auto-start NERDTree if no file specify
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" vim-gitgutter configuration
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•'
+let g:gitgutter_sign_modified_removed = '•'
 
 " vim-devicons configuration
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
