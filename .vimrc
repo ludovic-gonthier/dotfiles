@@ -102,7 +102,7 @@ let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch_prefix#enabled=1
 let g:airline#extensions#branch#empty_message = ''
 if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 
 " unicode symbols
@@ -116,8 +116,8 @@ let g:airline_symbols.readonly = '🔒'
 
 " Ale
 let g:ale_fixers = {
-			\   'javascript': ['eslint'],
-			\}
+\   'javascript': ['eslint'],
+\}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 
