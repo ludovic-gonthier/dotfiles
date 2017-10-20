@@ -21,7 +21,6 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'othree/yajs.vim'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -31,6 +30,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'w0rp/ale'
 
 
 " Snippets
@@ -51,6 +51,7 @@ set t_Co=256
 set background=dark
 
 let g:zenburn_high_Contrast = 1
+let g:mapleader = ','
 
 colors zenburn 
 
@@ -104,7 +105,6 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#branch_prefix#enabled=1
 let g:airline#extensions#branch#empty_message = ''
-let g:airline#extensions#syntastic#enabled=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -118,28 +118,12 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.readonly = '🔒'
 
-" Syntastic configuration
-set statusline+=%#warningmsg#
-set statusline+=%{fugitive#statusline()}
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_php_checkers = ['php', 'phpcs', 'phpmd']
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
-let g:syntastic_javascript_checkers = ['eslint', 'npm run lint']
-let g:syntastic_json_checkers = ['jsonlint']
-
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
-let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
-
-" Better syntastic symbols
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
+" Ale
+let g:ale_fixers = {
+			\   'javascript': ['eslint'],
+			\}
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
 
 " Snippets configuration
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -168,6 +152,37 @@ au VimEnter,BufWinEnter * syn match ErrorMsg " "
 
 " Toggle folding
 :nnoremap <space> za 
+
+" Toggle Lists
+function! GetBufferList()
+	redir =>buflist
+	silent! ls!
+	redir END
+	return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+	let buflist = GetBufferList()
+	for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+		if bufwinnr(bufnum) != -1
+			exec(a:pfx.'close')
+			return
+		endif
+	endfor
+	if a:pfx == 'l' && len(getloclist(0)) == 0
+		echohl ErrorMsg
+		echo "Location List is Empty."
+		return
+	endif
+	let winnr = winnr()
+	exec(a:pfx.'open')
+	if winnr() != winnr
+		wincmd p
+	endif
+endfunction
+
+nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
+nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
 
 " Custom commands
 
