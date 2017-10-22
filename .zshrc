@@ -14,6 +14,7 @@ if [[ ! $TERM =~ screen ]]; then
     exec tmux
 fi
 
+export PATH="$HOME/bin:$PATH"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="./node_modules/.bin:$PATH"
 
