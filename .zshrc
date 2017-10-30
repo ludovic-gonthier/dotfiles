@@ -11,7 +11,7 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [[ ! $TERM =~ screen ]]; then
-    exec tmux
+    exec `tmux attach -t base || tmux new -s base`
 fi
 
 export PATH="$HOME/bin:$PATH"
