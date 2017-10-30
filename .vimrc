@@ -8,16 +8,22 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
+Plugin 'shougo/unite.vim'
+Plugin 'shougo/vimproc.vim'
+Plugin 'sirver/ultisnips'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'jnurmine/Zenburn'
+Plugin 'honza/vim-snippets'
+Plugin 'jnurmine/zenburn'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'sniphpets/sniphpets'
+Plugin 'sniphpets/sniphpets-common'
+Plugin 'sniphpets/sniphpets-phpunit'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'tpope/tpope-vim-abolish'
@@ -28,31 +34,14 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
-Plugin 'airblade/vim-gitgutter'
-
-
-" Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'sniphpets/sniphpets'
-Plugin 'sniphpets/sniphpets-common'
-Plugin 'sniphpets/sniphpets-phpunit'
 
 call vundle#end()
 
 filetype plugin indent on
-
 syntax enable
 
-" Color theme
-set t_Co=256
-set background=dark
 
-let g:zenburn_high_Contrast = 1
-
-colors zenburn 
-
-" Global configuration
+" VIM - Global configuration
 set antialias
 set autowrite                     " Automatically :write before running commands
 set backspace=2
@@ -88,76 +77,78 @@ set undofile                      " Persistent undo
 set wildmenu                      " Enhanced command line completion.
 set wildmode=longest,list,full    " Complete files like a shell.
 
-" Omni completion configuration
-setlocal omnifunc=syntaxcomplete#Complete
-let g:omni_syntax_group_include_php = 'php\w\+'
+let mapleader = ","
+let maplocalleader = " "
 
-" Airline configuration
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tmuxline#enabled = 0
+" ZENBURN - Color theme
+set t_Co=256
+set background=dark
 
-" set airline theme
-let g:airline_theme='zenburn'
+let g:zenburn_high_Contrast = 1
+
+colors zenburn 
+
+
+" AIRLINE - Configuration
+let g:airline_left_sep = ''
 let g:airline_powerline_fonts=1
-let g:airline#extensions#branch#enabled=1
-let g:airline#extensions#branch_prefix#enabled=1
-let g:airline#extensions#branch#empty_message = ''
+let g:airline_right_sep = ''
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
-
-" unicode symbols
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.readonly = '🔒'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_theme='zenburn'
+let g:airline#extensions#branch#empty_message = ''
+let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#branch_prefix#enabled=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 0
 
-" Ale
+
+" ALE - Configuration
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 
-" Snippets configuration
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 
-" NERDTres configuration
-let g:NERDTreeShowHidden = 1 " Show hidden files
-let g:NERDTreeAutoDeleteBuffer = 1 " auto delete the buffer of the file you just deleted with NERDTree
-let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
-let g:NERDTreeHighlightFoldersFullName = 0 " highlights the folder name
-let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
-
-" Auto-start NERDTree if no file specify
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" vim-gitgutter configuration
-let g:gitgutter_sign_added = '•'
-let g:gitgutter_sign_modified = '•'
-let g:gitgutter_sign_removed = '•'
-let g:gitgutter_sign_removed_first_line = '•'
-let g:gitgutter_sign_modified_removed = '•'
-
-" vim-devicons configuration
+" DEVICONS - Configuration
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 
-" Higlight non-breaking spaces
-au VimEnter,BufWinEnter * syn match ErrorMsg " "
 
-" Key Bindings
-:vnoremap <F9> :sort u<cr>
+" GITGUTTER - Configuration
+let g:gitgutter_sign_added = '•'
+let g:gitgutter_sign_modified = '•'
+let g:gitgutter_sign_modified_removed = '•'
+let g:gitgutter_sign_removed = '•'
+let g:gitgutter_sign_removed_first_line = '•'
 
-" Toggle folding
-:nnoremap <space> za 
 
-" Toggle Lists
+" NERDTREE - Configuration
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 0
+let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
+let g:NERDTreeShowHidden = 1
+
+
+" Omni completion configuration
+let g:omni_syntax_group_include_php = 'php\w\+'
+setlocal omnifunc=syntaxcomplete#Complete
+
+
+" SNIPPETS - Configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+
+
+" VIM - Custom functions
 function! GetBufferList()
 	redir =>buflist
 	silent! ls!
@@ -185,13 +176,28 @@ function! ToggleList(bufname, pfx)
 	endif
 endfunction
 
+
+" VIM - Normal mode remap
+" " Toggle fold
+nnoremap <leader><space> za 
+" VIM - Visual mode remap
+" " Sort selection
+vnoremap <leader>s :sort u<cr>
+vnoremap <leader>S :sort! u<cr>
+
+
+" VIM - Normal mode map
 nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
-nmap <silent> <leader>e :call ToggleList("Quickfix List", 'c')<CR>
+nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 
-" Custom commands
 
-" Silently execute a function
+" VIM - Custom commands
+" " Auto-start NERDTree if no file specify
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" " Higlight non-breaking spaces
+au VimEnter,BufWinEnter * syn match ErrorMsg " "
+" " Silently execute a function
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
-
-" Refresh in background the ctags list
+" " Refresh in background the ctags list
 command! RefreshTag execute ":Silent !ctags -R . > /dev/null 2>&1 &"
