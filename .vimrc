@@ -176,10 +176,20 @@ function! ToggleList(bufname, pfx)
 	endif
 endfunction
 
+" VIM - Global remap
+" " Center window vertically on next/previous search match
+noremap n nzz
+noremap N Nzz
+" " Y Have the same behaviour as D or C
+noremap Y y$
+" " Equalize splits
+noremap <leader>= <C-w>=
 
 " VIM - Normal mode remap
 " " Toggle fold
 nnoremap <leader><space> za 
+
+
 " VIM - Visual mode remap
 " " Sort selection
 vnoremap <leader>s :sort u<cr>
