@@ -1,8 +1,9 @@
-PACKAGES := git stow vim tmux pip zsh ctags
+PACKAGES := git pip zsh ctags
 SHELL := /bin/bash
 
 .PHONY: install 
 install: requirements \
+	install-prerequisites \
 	install-vim \
 	install-tmux \
 	install-powerline \
@@ -11,15 +12,27 @@ install: requirements \
 	# Update fonts cache
 	@sudo fc-cache -vf
 
+.PHONY: install-prerequisites 
+install-prerequisites:
+	$(info --> Prerequisites for DOTFiles)
+	@yes | sudo apt-get install stow git zsh
+	$(info --> Prerequisites for TMUX)
+	@yes | sudo apt-get install libevent-dev libncurses-dev pkg-config autoconf
+	$(info --> Prerequisites for VIM)
+	@yes | sudo apt-get install exuberant-ctags 
+
 .PHONY: install-tmux 
 install-tmux:
-	$(info --> Install Tmux-tpm)
+	$(info --> Install TMUX)
+	[[ -d ${HOME}/src/tmux ]] || git clone git@github.com:tmux/tmux.git ${HOME}/src/tmux/
+	@cd ${HOME}/src/tmux/ && sh autogen.sh && ./configure --prefix=${HOME} && make && make install
+	$(info   --> Install Tmux-tpm)
 	@mkdir -p ${HOME}/.tmux/plugins
 	@[[ -d ${HOME}/.tmux/plugins/tpm ]] || git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 
 .PHONY: install-vim
 install-vim:
-	$(info --> Installing Vim)
+	$(info --> Installing VIM)
 	[[ -d ${HOME}/src/vim ]] || git clone git@github.com:vim/vim.git ${HOME}/src/vim/
 	$(info   --> Configuring Vim sources)
 	cd ${HOME}/src/vim  && \
@@ -30,7 +43,7 @@ install-vim:
 		--enable-rubyinterp=dynamic \
 		--enable-perlinterp=dynamic \
 	   	--enable-cscope
-	$(info   --> Compilling vim)
+	$(info   --> Compilling VIM)
 	cd ${HOME}/src/vim && make && sudo make install
 
 	$(info --> Configuring Vim bundles)
