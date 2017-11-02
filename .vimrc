@@ -207,6 +207,9 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " " Higlight non-breaking spaces
 au VimEnter,BufWinEnter * syn match ErrorMsg " "
+" " Map CAPS-LOCK to ESC when in VIM window
+au VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 " " Silently execute a function
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
 " " Refresh in background the ctags list
