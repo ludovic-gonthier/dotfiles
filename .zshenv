@@ -22,17 +22,23 @@ export PATH="$PATH:/sbin"
 export PATH="$PATH:/bin"
 export PATH="$PATH:/usr/games"
 export PATH="$PATH:/usr/local/games"
-export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:./node_modules/.bin"
+
 export ZSH=${HOME}/.oh-my-zsh
 export ZSH_THEME="agnoster"
 
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -f "$HOME/.zshenv.local" ] ; then
+	source "$HOME/.zshenv.local"
 fi
+
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -f "$HOME/.zshenv.local" ] ; then
-	source "$HOME/.zshenv.local"
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+if [ -s "$NVM_DIR/nvm.sh" ] ; then
+   	"$NVM_DIR/nvm.sh"  # This loads nvm
 fi

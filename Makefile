@@ -25,6 +25,7 @@ install-prerequisites:
 install-tmux:
 	$(info --> Install TMUX)
 	[[ -d ${HOME}/src/tmux ]] || git clone git@github.com:tmux/tmux.git ${HOME}/src/tmux/
+	@mkdir -p ${HOME}/share/man/man1
 	@cd ${HOME}/src/tmux/ && sh autogen.sh && ./configure --prefix=${HOME} && make && make install
 	$(info   --> Install Tmux-tpm)
 	@mkdir -p ${HOME}/.tmux/plugins
