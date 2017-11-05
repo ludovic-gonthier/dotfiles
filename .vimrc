@@ -8,9 +8,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'shougo/unite.vim'
-Plugin 'shougo/vimproc.vim'
-Plugin 'sirver/ultisnips'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'honza/vim-snippets'
@@ -21,6 +18,10 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'shougo/unite.vim'
+Plugin 'shougo/vimproc.vim'
+Plugin 'sirver/ultisnips'
+Plugin 'skywind3000/asyncrun.vim'
 Plugin 'sniphpets/sniphpets'
 Plugin 'sniphpets/sniphpets-common'
 Plugin 'sniphpets/sniphpets-phpunit'
@@ -188,7 +189,6 @@ noremap <leader>= <C-w>=
 " VIM - Normal mode remap
 " " Toggle fold
 nnoremap <leader><space> za 
-
 
 " VIM - Visual mode remap
 " " Sort selection
