@@ -199,6 +199,7 @@ vnoremap <leader>S :sort! u<cr>
 " VIM - Normal mode map
 nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
+nmap <leader>r :!tmux send-keys -t 1 C-p C-j <CR><CR>
 
 
 " VIM - Custom commands
