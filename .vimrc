@@ -59,8 +59,7 @@ set incsearch                     " Makes search act like in modern browsers
 set laststatus=2
 set laststatus=2                  " Always display the status line
 set lazyredraw                    " Redraw only when we need to.
-set list
-set listchars=tab:▸\ ,eol:¬,trail:·,extends:>,precedes:<,nbsp:•
+set listchars=tab:▸\ ,eol:¬,trail:·,extends:>,precedes:<
 set noerrorbells                  " No error bells
 set novisualbell                  "
 set number
@@ -196,6 +195,7 @@ nnoremap <leader><space> za
 vnoremap <leader>s :sort u<cr>
 vnoremap <leader>S :sort! u<cr>
 
+
 " VIM - Normal mode map
 nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
@@ -207,8 +207,6 @@ nmap <leader>i magg=G'a
 " " Auto-start NERDTree if no file specify
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" " Do not set list in NERDTree
-autocmd FileType nerdtree setlocal nolist
 " " Higlight non-breaking spaces
 au VimEnter,BufWinEnter * syn match ErrorMsg " "
 " " Map CAPS-LOCK to ESC when in VIM window
