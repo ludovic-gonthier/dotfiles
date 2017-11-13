@@ -26,6 +26,7 @@ export PATH="$PATH:./node_modules/.bin"
 
 export ZSH=${HOME}/.oh-my-zsh
 export ZSH_THEME="agnoster"
+export DEFAULT_USER=${USERNAME}
 
 if [ -f "$HOME/.zshenv.local" ] ; then
 	source "$HOME/.zshenv.local"
