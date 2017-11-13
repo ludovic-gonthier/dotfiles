@@ -40,5 +40,5 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 if [ -s "$NVM_DIR/nvm.sh" ] ; then
-   	"$NVM_DIR/nvm.sh"  # This loads nvm
+   	. "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
