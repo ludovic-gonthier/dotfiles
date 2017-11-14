@@ -39,11 +39,14 @@ Plugin 'w0rp/ale'
 call vundle#end()
 
 filetype plugin indent on
-syntax enable
+if !has('g:syntax_on')
+	syntax enable
+endif
 
 
 " VIM - Global configuration
 set antialias
+set autoindent
 set autowrite                     " Automatically :write before running commands
 set backspace=2
 set backspace=indent,eol,start
