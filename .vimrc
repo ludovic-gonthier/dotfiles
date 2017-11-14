@@ -223,3 +223,7 @@ augroup END
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
 " " Refresh in background the ctags list
 command! RefreshTag execute ":Silent !ctags -R . > /dev/null 2>&1 &"
+
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
