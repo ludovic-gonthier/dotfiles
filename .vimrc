@@ -204,16 +204,18 @@ nmap <leader>i magg=G'a
 
 
 " VIM - Custom commands
-" " Auto-start NERDTree if no file specify
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" " Do not set list in NERDTree
-autocmd FileType nerdtree setlocal nolist
-" " Higlight non-breaking spaces
-au VimEnter,BufWinEnter * syn match ErrorMsg " "
-" " Map CAPS-LOCK to ESC when in VIM window
-au VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+augroup NERDTree
+	" " Auto-start NERDTree if no file specify
+	autocmd StdinReadPre * let s:std_in=1
+	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+	" " Do not set list in NERDTree
+	autocmd FileType nerdtree setlocal nolist
+augroup END
+augroup CapsLockToEscaspe
+	" " Map CAPS-LOCK to ESC when in VIM window
+	autocmd VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+	autocmd VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+augroup END
 " " Silently execute a function
 command! -nargs=+ Silent execute 'silent <args>' | redraw!
 " " Refresh in background the ctags list
