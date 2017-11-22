@@ -59,7 +59,6 @@ set hidden                        " Handle multiple buffers better.
 set history=1000                  " Store lots of :cmdline history
 set hlsearch                      " Highlight search results
 set incsearch                     " Makes search act like in modern browsers
-set laststatus=2
 set laststatus=2                  " Always display the status line
 set lazyredraw                    " Redraw only when we need to.
 set list
