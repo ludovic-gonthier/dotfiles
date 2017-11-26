@@ -33,8 +33,6 @@ install-prerequisites:
 	@sudo apt-get install -y -q stow git zsh python-pip
 	@echo ├── Prerequisites for TMUX
 	@sudo apt-get install -y -q libevent-dev libncurses-dev pkg-config autoconf
-	@echo ├── Prerequisites for VIM
-	@sudo apt-get install -y -q exuberant-ctags libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev
 	@echo ├── Set default TERM to zsh
 	@chsh -s /bin/zsh
 	@echo └ PREREQUISITES  - Installation complete

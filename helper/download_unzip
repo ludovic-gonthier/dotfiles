@@ -1,0 +1,10 @@
+#!/bin/bash
+set -xeu
+IFS=$'\n'
+
+src=$1
+dst=$2
+
+wget $src -O $dst/temp.zip
+unzip $dst/temp.zip -d $dst
+rm $dst/temp.zip

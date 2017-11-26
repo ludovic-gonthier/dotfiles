@@ -89,9 +89,11 @@ set t_Co=256
 set background=dark
 
 let g:zenburn_high_Contrast = 1
-
-colors zenburn 
-
+try
+    colors zenburn
+catch /^Vim\%((\a\+)\)\=:E185/
+    " Should fail only at the first PluginInstall execution
+endtry
 
 " AIRLINE - Configuration
 let g:airline_left_sep = ''
