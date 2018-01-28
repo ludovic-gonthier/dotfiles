@@ -74,6 +74,7 @@ set shiftwidth=4 " when indenting with '>', use 4 spaces width
 set showcmd                       " Show commands
 set showmatch                     " Highlight matching [{()}]
 set showmode                      " Show mode -- INSERT --
+set tags+=.ctags/tags
 set tabstop=4 " show existing tab with 4 spaces width
 set ttyfast
 set undodir=~/.vim/undofiles      " Do not add ~un files everywhere I go
@@ -205,6 +206,7 @@ nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 nmap <leader>r :!tmux send-keys -t 1 C-p C-j <CR><CR>
 nmap <leader>i magg=G'a
+nmap <leader>rt :AsyncRun! ctags -f .ctags/tags --options=.ctags/.ctags<CR>
 
 
 " VIM - Custom commands
@@ -220,10 +222,6 @@ augroup CapsLockToEscaspe
 	autocmd VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 	autocmd VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 augroup END
-" " Silently execute a function
-command! -nargs=+ Silent execute 'silent <args>' | redraw!
-" " Refresh in background the ctags list
-command! RefreshTag execute ":Silent !ctags -R . > /dev/null 2>&1 &"
 
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()

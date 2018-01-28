@@ -1,5 +1,4 @@
-tags
-!tags/
-.ctagsignore
+.ctags/
+.cache
 **/*.sw*
 **/*.orig
