@@ -9,6 +9,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'airblade/vim-gitgutter'
+Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'honza/vim-snippets'
 Plugin 'jnurmine/zenburn'
@@ -155,6 +156,10 @@ let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
 
+" PHP Namespace - Configuration
+let g:php_namespace_sort_after_insert = 1
+
+
 " VIM - Custom functions
 function! GetBufferList()
 	redir =>buflist
@@ -181,6 +186,10 @@ function! ToggleList(bufname, pfx)
 	if winnr() != winnr
 		wincmd p
 	endif
+
+function! IPhpInsertUse()
+call PhpInsertUse()
+    call feedkeys('a',  'n')
 endfunction
 
 " VIM - Global remap
@@ -207,6 +216,7 @@ nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 nmap <leader>r :!tmux send-keys -t 1 C-p C-j <CR><CR>
 nmap <leader>i magg=G'a
 nmap <leader>rt :AsyncRun! ctags -f .ctags/tags --options=.ctags/.ctags<CR>
+autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
 
 
 " VIM - Custom commands
