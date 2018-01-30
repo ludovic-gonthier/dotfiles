@@ -11,14 +11,14 @@
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 if [[ ! $TERM =~ screen ]]; then
-    exec tmux 
+    exec tmux
 fi
 
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 if [ -f "$HOME/.zshrc.local" ] ; then
-	source "$HOME/.zshrc.local"
+    source "$HOME/.zshrc.local"
 fi
 
 source ~/.aliases

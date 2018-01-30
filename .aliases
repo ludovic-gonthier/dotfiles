@@ -7,5 +7,5 @@ alias dcr="docker-compose run"
 alias dcu="docker-compose up"
 
 if [ -f "$HOME/.aliases.local" ] ; then
-	source "$HOME/.aliases.local"
+    source "$HOME/.aliases.local"
 fi

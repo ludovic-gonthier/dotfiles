@@ -1,6 +1,6 @@
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
+    source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
 export LANG="en_US.UTF-8"
@@ -29,7 +29,7 @@ export ZSH_THEME="agnoster"
 export DEFAULT_USER=${USERNAME}
 
 if [ -f "$HOME/.zshenv.local" ] ; then
-	source "$HOME/.zshenv.local"
+    source "$HOME/.zshenv.local"
 fi
 
 if [ -d "$HOME/.local/bin" ]; then

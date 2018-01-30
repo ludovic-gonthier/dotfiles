@@ -41,7 +41,7 @@ call vundle#end()
 
 filetype plugin indent on
 if !has('g:syntax_on')
-	syntax enable
+    syntax enable
 endif
 
 
@@ -102,7 +102,7 @@ let g:airline_left_sep = ''
 let g:airline_powerline_fonts=1
 let g:airline_right_sep = ''
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.linenr = '¶'
@@ -162,30 +162,31 @@ let g:php_namespace_sort_after_insert = 1
 
 " VIM - Custom functions
 function! GetBufferList()
-	redir =>buflist
-	silent! ls!
-	redir END
-	return buflist
+    redir =>buflist
+    silent! ls!
+    redir END
+    return buflist
 endfunction
 
 function! ToggleList(bufname, pfx)
-	let buflist = GetBufferList()
-	for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
-		if bufwinnr(bufnum) != -1
-			exec(a:pfx.'close')
-			return
-		endif
-	endfor
-	if a:pfx == 'l' && len(getloclist(0)) == 0
-		echohl ErrorMsg
-		echo "Location List is Empty."
-		return
-	endif
-	let winnr = winnr()
-	exec(a:pfx.'open')
-	if winnr() != winnr
-		wincmd p
-	endif
+    let buflist = GetBufferList()
+    for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+        if bufwinnr(bufnum) != -1
+            exec(a:pfx.'close')
+            return
+        endif
+    endfor
+    if a:pfx == 'l' && len(getloclist(0)) == 0
+        echohl ErrorMsg
+        echo "Location List is Empty."
+        return
+    endif
+    let winnr = winnr()
+    exec(a:pfx.'open')
+    if winnr() != winnr
+        wincmd p
+    endif
+endfunction
 
 function! IPhpInsertUse()
 call PhpInsertUse()
@@ -203,7 +204,7 @@ noremap <leader>= <C-w>=
 
 " VIM - Normal mode remap
 " " Toggle fold
-nnoremap <leader><space> za 
+nnoremap <leader><space> za
 
 " VIM - Visual mode remap
 " " Sort selection
@@ -221,18 +222,18 @@ autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
 
 " VIM - Custom commands
 augroup NERDTree
-	" " Auto-start NERDTree if no file specify
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-	" " Do not set list in NERDTree
-	autocmd FileType nerdtree setlocal nolist
+    " " Auto-start NERDTree if no file specify
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+    " " Do not set list in NERDTree
+    autocmd FileType nerdtree setlocal nolist
 augroup END
 augroup CapsLockToEscaspe
-	" " Map CAPS-LOCK to ESC when in VIM window
-	autocmd VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-	autocmd VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+    " " Map CAPS-LOCK to ESC when in VIM window
+    autocmd VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+    autocmd VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 augroup END
 
 if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
+    call webdevicons#refresh()
 endif

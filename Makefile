@@ -1,10 +1,10 @@
 SHELL := /bin/bash
 
 define backup_file
-	@if [ -e $(1) ]; then mv $(1) $(1).bck; fi
+@if [ -e $(1) ]; then mv $(1) $(1).bck; fi
 endef
 
-.PHONY: install 
+.PHONY: install
 install: install-prerequisites \
 	install-vim \
 	install-tmux \
@@ -23,12 +23,12 @@ install-files:
 	stow -S -R . -t "${HOME}" -v
 	@echo └ DOTFILES   - Installation complete
 
-.PHONY: install-prerequisites 
+.PHONY: install-prerequisites
 install-prerequisites:
 	@echo ┌ PREREQUISITES - Instalation start
 	@echo ├── Prerequisites direcotories
-	@mkdir -p ${HOME}/src ${HOME}/bin ${HOME}/share/man/man1
-	@sudo chown ${USERNAME}:${USERNAME} -R ${HOME}/src ${HOME}/bin ${HOME}/share/man/man1
+	@mkdir -p ${HOME}/src ${HOME}/bin ${HOME}/share
+	@sudo chown ${USERNAME}:${USERNAME} -R ${HOME}/src ${HOME}/bin ${HOME}/share
 	@echo ├── Prerequisites for DOTFiles
 	@sudo apt-get install -y -q stow git zsh python-pip
 	@echo ├── Prerequisites for TMUX

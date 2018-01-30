@@ -1,27 +1,28 @@
 [alias]
-	git = !exec git
-	br = branch
-	ci = commit -v
-	co = checkout
-	st = status
-	stu = status -u
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lc = log ORIG_HEAD.. --stat --no-merges
-	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-	undo = reset --hard HEAD^
-	cleanup = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
+    git = !exec git
+    br = branch
+    ci = commit -v
+    co = checkout
+    st = status
+    stu = status -u
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lc = log ORIG_HEAD.. --stat --no-merges
+    new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+    stpf = "!git push origin `git subtree split --prefix $1 master`:$2 --force"
+    undo = reset --hard HEAD^
+    cleanup = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
 [commit]
-	verbose = true
+    verbose = true
 [core]
-	editor = vim +startinsert
+    editor = vim +startinsert
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [rebase]
     autosquash = true
 [sequence]
-	editor = vim
+    editor = vim
 [tag]
-	sort = version:refname
+    sort = version:refname
 [user]
-	name = Ludovic Gonthier
+    name = Ludovic Gonthier
     email = gonthier.ludovic@gmail.com
