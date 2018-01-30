@@ -6,11 +6,12 @@ endef
 
 .PHONY: install
 install: install-prerequisites \
+	install-files \
+	install-git \
 	install-vim \
 	install-tmux \
 	install-fonts \
-	install-oh-my-zsh \
-	install-files \
+	install-shell \
 	configure-vim \
 
 .PHONY: install-files
@@ -23,6 +24,17 @@ install-files:
 	stow -S -R . -t "${HOME}" -v
 	@echo └ DOTFILES   - Installation complete
 
+.PHONY: install-fonts
+install-fonts:
+	@wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+	@sudo mv PowerlineSymbols.otf /usr/share/fonts/
+	@sudo fc-cache -vf
+	@sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+
+.PHONY: install-git
+install-git:
+	@zsh ./install-scripts/git.sh
+
 .PHONY: install-prerequisites
 install-prerequisites:
 	@echo ┌ PREREQUISITES - Instalation start
@@ -31,13 +43,13 @@ install-prerequisites:
 	@sudo chown ${USERNAME}:${USERNAME} -R ${HOME}/src ${HOME}/bin ${HOME}/share
 	@echo ├── Prerequisites for DOTFiles
 	@sudo apt-get install -y -q stow git zsh python-pip
-	@echo ├── Prerequisites for TMUX
-	@sudo apt-get install -y -q libevent-dev libncurses-dev pkg-config autoconf
-	@echo ├── Set default TERM to zsh
-	@chsh -s /bin/zsh
 	@echo └ PREREQUISITES  - Installation complete
 
-.PHONY: install-tmux 
+.PHONY: install-shell
+install-shell:
+	@zsh ./install-scripts/shell.sh
+
+.PHONY: install-tmux
 install-tmux:
 	@zsh ./install-scripts/tmux.sh
 
@@ -45,28 +57,18 @@ install-tmux:
 install-vim:
 	@zsh ./install-scripts/vim.sh
 
-.PHONY: install-fonts
-install-fonts:
-	@wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-	@sudo mv PowerlineSymbols.otf /usr/share/fonts/
-	@sudo fc-cache -vf
-	@sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
-
-.PHONY: install-oh-my-zsh
-install-oh-my-zsh:
-	@zsh ./install-scripts/oh-my-zsh.sh
-
 .PHONY: uninstall
-uninstall:
+uninstall: uninstall-tmux \
+	uninstall-vim
 	@stow -D . -t "$(HOME)" -v
 
-.PHONY:	uninstall-tmux
+.PHONY: uninstall-tmux
 uninstall-tmux:
 	$(info --> Uninstall Tmux plugins)
 	[[ -d ${HOME}/.tmux/plugins ]] && rm -rf ${HOME}/.tmux/plugins
-.PHONY:	uninstall-vim
+	.PHONY: uninstall-vim
 uninstall-vim:
 	$(info --> Uninstall Vim plugins)
-	#@[[ -d ${HOME}/.vim/biundle ]] && rm -rf ${HOME}/.vim/biundle
+	@[[ -d ${HOME}/.vim/bundle ]] && rm -rf ${HOME}/.vim/bundle
 	@[[ -e /usr/share/fonts/PowerlineSymbols.otf ]] && rm -rf /usr/share/fonts/PowerlineSymbols.otf
 	@[[ -d /etc/fonts/conf.d/10-powerline-symbols.conf ]] && rm -rf /etc/fonts/conf.d/10-powerline-symbols.conf

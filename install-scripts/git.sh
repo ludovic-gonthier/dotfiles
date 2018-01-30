@@ -9,7 +9,7 @@ subtree_binary_file=${HOME}/bin/git-subtree
 current_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [ ! -d $source_directory ]; then
-    $current_directory/../helper/download_unzip https://github.com/git/git/archive/v$version.zip ~/src/
+    $current_directory/helper/download_unzip https://github.com/git/git/archive/v$version.zip ~/src/
 fi
 
 sudo apt-get install -y \
