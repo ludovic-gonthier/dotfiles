@@ -12,7 +12,6 @@ install: install-prerequisites \
 	install-tmux \
 	install-fonts \
 	install-shell \
-	configure-vim \
 
 .PHONY: install-files
 install-files:

@@ -7,7 +7,7 @@ binary_file=${HOME}/bin/vim
 dataroot_directory=${HOME}/share/vim/vim80
 
 current_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-dl=$current_directory/../helper/download_unzip
+dl=$current_directory/helper/download_unzip
 
 echo "┌ VIM - Installation start"
 if [ ! -d $source_directory ]; then
@@ -30,7 +30,8 @@ sudo apt-get install -y \
     libncurses5-dev \
     libxaw7-dev \
     libxpm-dev \
-    libxt-dev
+    libxt-dev \
+    zlib1g-dev
 echo "├ VIM sources: $source_directory"
 
 if [ ! -x $binary_file ]; then
@@ -67,7 +68,7 @@ mkdir -p ${HOME}/.vim/undofiles
 
 if [ ! -d ${HOME}/.vim/bundle/Vundle.vim ]; then
     echo "├── Installing Plugin Manager"
-    wget clone https://github.com/gmarik/Vundle.vim.git -O ${HOME}/.vim/bundle/Vundle.vim
+    git clone https://github.com/gmarik/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim
     echo "├── Installing Plugins"
     $binary_file +PluginInstall +qall
 fi
