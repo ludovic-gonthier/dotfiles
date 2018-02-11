@@ -141,6 +141,7 @@ let g:gitgutter_sign_removed_first_line = '•'
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 0
+let g:NERDTreeLimitedSyntax = 1
 let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
 let g:NERDTreeShowHidden = 1
 
@@ -154,6 +155,15 @@ setlocal omnifunc=syntaxcomplete#Complete
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
+
+
+" VIM Polyglot - Configuration
+let g:php_html_load = 0
+let g:php_html_in_heredoc = 0
+let g:php_html_in_nowdoc = 0
+let g:php_sql_query = 0
+let g:php_sql_heredoc = 0
+let g:php_sql_nowdoc = 0
 
 
 " PHP Namespace - Configuration
