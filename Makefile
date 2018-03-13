@@ -12,6 +12,7 @@ install: install-prerequisites \
 	install-tmux \
 	install-fonts \
 	install-shell \
+	replace-capslock-by-escape \
 
 .PHONY: install-files
 install-files:
@@ -56,6 +57,9 @@ install-tmux:
 install-vim:
 	@zsh ./install-scripts/vim.sh
 
+.PHONY: replace-capslock-by-escape
+replace-capslock-by-escape:
+	@dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
 .PHONY: uninstall
 uninstall: uninstall-tmux \
 	uninstall-vim
