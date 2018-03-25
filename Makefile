@@ -42,7 +42,7 @@ install-prerequisites:
 	@mkdir -p ${HOME}/src ${HOME}/bin ${HOME}/share
 	@sudo chown ${USERNAME}:${USERNAME} -R ${HOME}/src ${HOME}/bin ${HOME}/share
 	@echo ├── Prerequisites for DOTFiles
-	@sudo apt-get install -y -q stow git zsh python-pip
+	@sudo apt-get install -y -q stow git zsh python-pip autoconf zlib1g-dev
 	@echo └ PREREQUISITES  - Installation complete
 
 .PHONY: install-shell
