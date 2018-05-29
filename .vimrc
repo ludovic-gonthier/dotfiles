@@ -36,6 +36,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf'
 
 call vundle#end()
 
@@ -170,6 +171,11 @@ let g:php_sql_nowdoc = 0
 let g:php_namespace_sort_after_insert = 1
 
 
+" FZF
+nnoremap <silent> <leader>f :FZF<CR>
+nnoremap <silent> <leader>r :FZFA<CR>
+
+
 " VIM - Custom functions
 function! GetBufferList()
     redir =>buflist
@@ -243,6 +249,13 @@ augroup CapsLockToEscaspe
     autocmd VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
     autocmd VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 augroup END
+
+" Wrapper arround fzf, setup ag to not ignore files
+:command! -nargs=0 FZFA
+    \  execute ':let $FZF_DEFAULT_COMMAND_DEFAULT=$FZF_DEFAULT_COMMAND'
+    \ | execute ':let $FZF_DEFAULT_COMMAND="ag -l -a --hidden"'
+    \ | execute ':FZF'
+    \ | execute ':let $FZF_DEFAULT_COMMAND=$FZF_DEFAULT_COMMAND_DEFAULT'
 
 if exists("g:loaded_webdevicons")
     call webdevicons#refresh()
