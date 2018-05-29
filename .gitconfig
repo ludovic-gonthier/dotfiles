@@ -10,7 +10,7 @@
     new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
     stpf = "!git push origin `git subtree split --prefix $1 master`:$2 --force"
     undo = reset --hard HEAD^
-    cleanup = "!git branch --merged | grep  -v '\\*\\|master' | xargs -n 1 git branch -d"
+    cleanup = "!git branch --merged | grep  -v '\\*\\|master' | grep -v '\\*\\|develop' | xargs -n 1 git branch -d"
 [commit]
     verbose = true
 [core]
