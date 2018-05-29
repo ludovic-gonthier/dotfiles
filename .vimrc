@@ -118,12 +118,17 @@ let g:airline#extensions#tmuxline#enabled = 0
 
 
 " ALE - Configuration
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'php': ['phpcs'],
+\}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
+\   'php': ['phpcs'],
 \}
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
-
+let g:ale_lint_delay = 1000
 
 " DEVICONS - Configuration
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
@@ -203,9 +208,9 @@ function! ToggleList(bufname, pfx)
     endif
 endfunction
 
-function! IPhpInsertUse()
-call PhpInsertUse()
-    call feedkeys('a',  'n')
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys("B i\\",  'i')
 endfunction
 
 " VIM - Global remap
@@ -236,6 +241,10 @@ autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
 
 
 " VIM - Custom commands
+augroup PHPNamespace
+    autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
+    autocmd FileType php noremap <Leader>pe :call IPhpExpandClass()<CR>
+augroup END
 augroup NERDTree
     " " Auto-start NERDTree if no file specify
     autocmd StdinReadPre * let s:std_in=1

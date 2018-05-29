@@ -23,6 +23,7 @@ export PATH="$PATH:/bin"
 export PATH="$PATH:/usr/games"
 export PATH="$PATH:/usr/local/games"
 export PATH="$PATH:./node_modules/.bin"
+export PATH="$PATH:./vendor/bin"
 
 export ZSH=${HOME}/.oh-my-zsh
 export ZSH_THEME="agnoster"
