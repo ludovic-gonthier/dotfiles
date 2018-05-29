@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e;
 
-version='8.0.1341'
+version='8.0.1520'
 source_directory=${HOME}/src/vim-${version}
 binary_file=${HOME}/bin/vim
 dataroot_directory=${HOME}/share/vim/vim80
@@ -31,6 +31,7 @@ sudo apt-get install -y \
     libxaw7-dev \
     libxpm-dev \
     libxt-dev \
+    python-dev \
     zlib1g-dev
 echo "├ VIM sources: $source_directory"
 
