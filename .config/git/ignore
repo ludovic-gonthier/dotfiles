@@ -2,3 +2,7 @@
 .cache
 **/*.sw*
 **/*.orig
+TODO.md
+IDEA.md
+
+.nvmrc
