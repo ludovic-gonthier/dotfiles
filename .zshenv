@@ -39,7 +39,3 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-
-if [ -s "$NVM_DIR/nvm.sh" ] ; then
-   	. "$NVM_DIR/nvm.sh"  # This loads nvm
-fi
