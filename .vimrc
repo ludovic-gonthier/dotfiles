@@ -52,6 +52,7 @@ set autowrite                     " Automatically :write before running commands
 set backspace=2
 set backspace=indent,eol,start
 set clipboard=unnamed             " For OSX clipboard
+set completeopt+=preview
 set cursorline                    " Highlight current line
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
 set foldmethod=indent
@@ -130,9 +131,6 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_lint_delay = 1000
 
-" DEVICONS - Configuration
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
-
 
 " GITGUTTER - Configuration
 let g:gitgutter_sign_added = '•'
@@ -146,7 +144,7 @@ let g:gitgutter_sign_removed_first_line = '•'
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 0
-let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeSyntaxEnabledExtensions = ['css', 'js', 'jsx', 'twig', 'php', 'yaml', 'yml']
 let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
 let g:NERDTreeShowHidden = 1
 
@@ -219,12 +217,10 @@ noremap n nzz
 noremap N Nzz
 " " Y Have the same behaviour as D or C
 noremap Y y$
-" " Equalize splits
-noremap <leader>= <C-w>=
+" " Always open tag select when multiple tags available
+noremap <C-]> g<C-]>
 
 " VIM - Normal mode remap
-" " Toggle fold
-nnoremap <leader><space> za
 
 " VIM - Visual mode remap
 " " Sort selection
@@ -234,11 +230,20 @@ vnoremap <leader>S :sort! u<cr>
 " VIM - Normal mode map
 nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
-nmap <leader>r :!tmux send-keys -t 1 C-p C-j <CR><CR>
+nmap <silent> <leader>re :!tmux send-keys -t 1:1 C-p C-j <CR><CR>
 nmap <leader>i magg=G'a
 nmap <leader>rt :AsyncRun! ctags -f .ctags/tags --options=.ctags/.ctags<CR>
-autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
-
+" " Fold/Unfold
+nmap <leader><space> za
+" " Window related mapping
+" " Equalize splits
+nmap <leader>= <C-w>=
+" " Split horizontally
+nmap <silent> <leader>- :split<CR>
+" " Split vertically
+nmap <silent> <leader>\| :vsplit<CR>
+" " Toggle NERDTree
+nmap <silent> <leader>e :NERDTreeToggle<CR><C-w>=
 
 " VIM - Custom commands
 augroup PHPNamespace
@@ -251,11 +256,6 @@ augroup NERDTree
     autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
     " " Do not set list in NERDTree
     autocmd FileType nerdtree setlocal nolist
-augroup END
-augroup CapsLockToEscaspe
-    " " Map CAPS-LOCK to ESC when in VIM window
-    autocmd VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-    autocmd VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 augroup END
 
 " Wrapper arround fzf, setup ag to not ignore files
