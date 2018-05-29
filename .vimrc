@@ -8,7 +8,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'airblade/vim-gitgutter'
 Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'honza/vim-snippets'
@@ -26,8 +25,6 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'sniphpets/sniphpets'
 Plugin 'sniphpets/sniphpets-common'
 Plugin 'sniphpets/sniphpets-phpunit'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -37,6 +34,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'w0rp/ale'
 Plugin 'junegunn/fzf'
+Plugin 'suan/vim-instant-markdown'
+Plugin 'jparise/vim-graphql'
 
 call vundle#end()
 
