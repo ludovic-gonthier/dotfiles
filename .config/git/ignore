@@ -4,5 +4,6 @@
 **/*.orig
 TODO.md
 IDEA.md
+.idea
 
 .nvmrc
