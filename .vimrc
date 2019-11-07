@@ -143,12 +143,21 @@ let g:gitgutter_sign_removed_first_line = '•'
 
 " NERDTREE - Configuration
 let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFolders = 0
 let g:NERDTreeHighlightFoldersFullName = 0
 let g:NERDTreeSyntaxEnabledExtensions = ['css', 'js', 'jsx', 'twig', 'php', 'yaml', 'yml']
 let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
 let g:NERDTreeShowHidden = 1
 
+" VIM DEVICONS - Configuration
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+let g:DevIconsEnableFoldersOpenClose = v:true
+let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = "\u00a0"
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['vendor'] = "\uf487"
+let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['node_modules'] = "\uf487"
 
 " Omni completion configuration
 let g:omni_syntax_group_include_php = 'php\w\+'
