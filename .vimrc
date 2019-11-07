@@ -256,6 +256,8 @@ nmap <silent> <leader>\| :vsplit<CR>
 nmap <silent> <leader>e :NERDTreeToggle<CR><C-w>=
 " " Find current file in NERDTree
 nmap <silent> <leader>ef :NERDTreeFind<CR><C-w>=
+" " Remove current buffer and go to the previous one
+nmap <silent> <leader>bd :bp<CR>:bd#<CR>
 
 " VIM - Custom commands
 augroup PHPNamespace
