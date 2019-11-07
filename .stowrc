@@ -1,4 +1,6 @@
+--ignore=.stowrc
 --ignore=Makefile
 --ignore=README.md
---ignore=.stowrc
+--ignore=helper
+--ignore=install-scripts
 --override=.*
