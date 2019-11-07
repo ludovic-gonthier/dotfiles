@@ -254,6 +254,8 @@ nmap <silent> <leader>- :split<CR>
 nmap <silent> <leader>\| :vsplit<CR>
 " " Toggle NERDTree
 nmap <silent> <leader>e :NERDTreeToggle<CR><C-w>=
+" " Find current file in NERDTree
+nmap <silent> <leader>ef :NERDTreeFind<CR><C-w>=
 
 " VIM - Custom commands
 augroup PHPNamespace
