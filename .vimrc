@@ -1,41 +1,45 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp+=~/.vim/bundle/Vundle.vim
+" Install vim-plug if not already installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-call vundle#begin()
+call plug#begin('~/.vim/plug-bundle')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'jnurmine/zenburn'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'scrooloose/nerdtree' | Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'shougo/unite.vim'
+Plug 'shougo/vimproc.vim'
+Plug 'sirver/ultisnips'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'tpope/tpope-vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf'
+Plug 'suan/vim-instant-markdown'
+Plug 'ap/vim-css-color'
+Plug 'jceb/vim-orgmode' | Plug 'inkarkat/vim-SyntaxRange'
 
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'jnurmine/zenburn'
-Plugin 'majutsushi/tagbar'
-Plugin 'mileszs/ack.vim'
-Plugin 'nelstrom/vim-visual-star-search'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'shougo/unite.vim'
-Plugin 'shougo/vimproc.vim'
-Plugin 'sirver/ultisnips'
-Plugin 'skywind3000/asyncrun.vim'
-Plugin 'tpope/tpope-vim-abolish'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'w0rp/ale'
-Plugin 'junegunn/fzf'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'jparise/vim-graphql'
-Plugin 'ap/vim-css-color'
-Plugin 'jceb/vim-orgmode'
-Plugin 'inkarkat/vim-SyntaxRange'
+Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+Plug 'sniphpets/sniphpets', { 'for': 'php' }
+Plug 'sniphpets/sniphpets-common', { 'for': 'php' }
+Plug 'sniphpets/sniphpets-phpunit', { 'for': 'php' }
+Plug 'rayburgemeestre/phpfolding.vim', { 'for': 'php' }
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 if !has('g:syntax_on')

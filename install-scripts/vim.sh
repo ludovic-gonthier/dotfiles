@@ -68,12 +68,6 @@ echo "├ Configuring"
 mkdir -p ${HOME}/.vim/bundle
 mkdir -p ${HOME}/.vim/undofiles
 
-if [ ! -d ${HOME}/.vim/bundle/Vundle.vim ]; then
-    echo "├── Installing Plugin Manager"
-    git clone https://github.com/gmarik/Vundle.vim.git ${HOME}/.vim/bundle/Vundle.vim
-    echo "├── Installing Plugins"
-    $binary_file +PluginInstall +qall
-fi
 
 if [ ! -d ${HOME}/.vim/ftplugin ]; then
     echo "├── Installing FileType Plugins"

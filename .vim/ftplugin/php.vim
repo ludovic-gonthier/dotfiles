@@ -3,13 +3,6 @@ if exists("did_load_after_php")
 endif
 let did_load_after_php = 1
 
-" Plugins
-Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'sniphpets/sniphpets'
-Plugin 'sniphpets/sniphpets-common'
-Plugin 'sniphpets/sniphpets-phpunit'
-Plugin 'rayburgemeestre/phpfolding.vim'
-
 " Plugins Configurations
 let g:ale_linters = {
 \   'php': ['php', 'php_cs_fixer'],
