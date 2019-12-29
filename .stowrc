@@ -3,4 +3,5 @@
 --ignore=README.md
 --ignore=helper
 --ignore=install-scripts
+--ignore=.vim
 --override=.*

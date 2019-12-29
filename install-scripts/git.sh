@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e;
 
-version="2.17.0"
+version="2.20.1"
 source_directory=${HOME}/src/git-$version
 subtree_source_directory=$source_directory/contrib/subtree/
 binary_file=${HOME}/bin/git

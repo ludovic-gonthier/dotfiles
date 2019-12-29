@@ -1,0 +1,27 @@
+snippet rtest
+import React from 'react';
+import renderer from 'react-test-renderer';
+
+import ${1:`!v expand('%:t:r:s?\.test$??')`} from './$1';
+
+describe('$1', () => {
+  let component;
+  beforeAll(() => {
+    renderer.act(() => {
+      component = renderer.create(<$1/>);
+    });
+  });
+
+  ${2}
+});
+endsnippet
+
+snippet rcre
+renderer.create(<${1}/>);
+endsnippet
+
+snippet ract
+renderer.act(() => {
+  ${1}
+});
+endsnippet

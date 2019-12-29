@@ -4,6 +4,12 @@ define backup_file
 @if [ -e $(1) ]; then mv $(1) $(1).bck; fi
 endef
 
+.PHONY: help
+help:
+	@grep -E '^[a-zA-Z1-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| sort \
+		| awk 'BEGIN { FS = ":.*?## " }; { printf "\033[36m%-30s\033[0m %s\n", $$1, $$2 }'
+
 .PHONY: install
 install: install-prerequisites \
 	install-files \
@@ -23,6 +29,16 @@ install-files:
 	@echo ├── Install files
 	stow -S -R . -t "${HOME}" -v
 	@echo └ DOTFILES   - Installation complete
+
+.PHONY: uninstall-files
+uninstall-files:
+	@echo ┌ DOTFILES - Instalation start
+	@echo ├── Backup files
+	$(call backup_file, ${HOME}/.profile)
+	$(call backup_file, ${HOME}/.zshrc)
+	@echo ├── unInstall files
+	stow -D . -t "${HOME}" -v
+	@echo └ DOTFILES   - Uninstallation complete
 
 .PHONY: install-fonts
 install-fonts:

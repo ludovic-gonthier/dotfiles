@@ -1,0 +1,43 @@
+snippet test
+import ${1:`!v expand('%:t:r:s?\.test$??')`} from './$1';
+
+describe('$1', () => {
+  ${2}
+});
+endsnippet
+
+snippet de
+describe('${1}', () => {
+  ${2}
+});
+endsnippet
+
+snippet it
+it('${1}', () => {
+  ${2}
+});
+endsnippet
+
+snippet ball
+beforeAll(() => {
+  ${1}
+});
+endsnippet
+
+snippet aall
+afterAll(() => {
+  ${1}
+});
+endsnippet
+
+snippet beach
+beforeEach(() => {
+  ${1}
+});
+endsnippet
+
+snippet aeach
+afterEach(() => {
+  ${1}
+});
+endsnippet

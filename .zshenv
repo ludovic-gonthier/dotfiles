@@ -3,6 +3,7 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
     source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
+export EDITOR="vim"
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"

@@ -8,9 +8,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'honza/vim-snippets'
 Plugin 'jnurmine/zenburn'
 Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
@@ -22,9 +20,6 @@ Plugin 'shougo/unite.vim'
 Plugin 'shougo/vimproc.vim'
 Plugin 'sirver/ultisnips'
 Plugin 'skywind3000/asyncrun.vim'
-Plugin 'sniphpets/sniphpets'
-Plugin 'sniphpets/sniphpets-common'
-Plugin 'sniphpets/sniphpets-phpunit'
 Plugin 'tpope/tpope-vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -36,6 +31,9 @@ Plugin 'w0rp/ale'
 Plugin 'junegunn/fzf'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'jparise/vim-graphql'
+Plugin 'ap/vim-css-color'
+Plugin 'jceb/vim-orgmode'
+Plugin 'inkarkat/vim-SyntaxRange'
 
 call vundle#end()
 
@@ -55,7 +53,7 @@ set clipboard=unnamed             " For OSX clipboard
 set completeopt+=preview
 set cursorline                    " Highlight current line
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
-set foldmethod=indent
+set foldmethod=syntax
 set guifont=Hack\ 14              " Define hack as font, powerline
 set hidden                        " Handle multiple buffers better.
 set history=1000                  " Store lots of :cmdline history
@@ -76,7 +74,7 @@ set shiftwidth=4 " when indenting with '>', use 4 spaces width
 set showcmd                       " Show commands
 set showmatch                     " Highlight matching [{()}]
 set showmode                      " Show mode -- INSERT --
-set tags+=.ctags/tags
+set tags+=.ctags
 set tabstop=4 " show existing tab with 4 spaces width
 set ttyfast
 set undodir=~/.vim/undofiles      " Do not add ~un files everywhere I go
@@ -120,12 +118,13 @@ let g:airline#extensions#tmuxline#enabled = 0
 
 " ALE - Configuration
 let g:ale_linters = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
-\   'php': ['phpcs'],
+\   'scss': ['stylelint'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
-\   'php': ['phpcs'],
+\   'scss': ['stylelint'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✗'
@@ -168,20 +167,8 @@ setlocal omnifunc=syntaxcomplete#Complete
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-
-
-" VIM Polyglot - Configuration
-let g:php_html_load = 0
-let g:php_html_in_heredoc = 0
-let g:php_html_in_nowdoc = 0
-let g:php_sql_query = 0
-let g:php_sql_heredoc = 0
-let g:php_sql_nowdoc = 0
-
-
-" PHP Namespace - Configuration
-let g:php_namespace_sort_after_insert = 1
-
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips-snippets']
 
 " FZF
 nnoremap <silent> <leader>f :FZF<CR>
@@ -216,11 +203,6 @@ function! ToggleList(bufname, pfx)
     endif
 endfunction
 
-function! IPhpExpandClass()
-    call PhpExpandClass()
-    call feedkeys("B i\\",  'i')
-endfunction
-
 " VIM - Global remap
 " " Center window vertically on next/previous search match
 noremap n nzz
@@ -242,7 +224,6 @@ nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
 nmap <silent> <leader>q :call ToggleList("Quickfix List", 'c')<CR>
 nmap <silent> <leader>re :!tmux send-keys -t 1:1 C-p C-j <CR><CR>
 nmap <leader>i magg=G'a
-nmap <leader>rt :AsyncRun! ctags -f .ctags/tags --options=.ctags/.ctags<CR>
 " " Fold/Unfold
 nmap <leader><space> za
 " " Window related mapping
@@ -260,10 +241,6 @@ nmap <silent> <leader>ef :NERDTreeFind<CR><C-w>=
 nmap <silent> <leader>bd :bp<CR>:bd#<CR>
 
 " VIM - Custom commands
-augroup PHPNamespace
-    autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
-    autocmd FileType php noremap <Leader>pe :call IPhpExpandClass()<CR>
-augroup END
 augroup NERDTree
     " " Auto-start NERDTree if no file specify
     autocmd StdinReadPre * let s:std_in=1
