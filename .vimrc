@@ -33,11 +33,8 @@ Plug 'suan/vim-instant-markdown'
 Plug 'ap/vim-css-color'
 Plug 'jceb/vim-orgmode' | Plug 'inkarkat/vim-SyntaxRange'
 
-Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
-Plug 'sniphpets/sniphpets', { 'for': 'php' }
-Plug 'sniphpets/sniphpets-common', { 'for': 'php' }
-Plug 'sniphpets/sniphpets-phpunit', { 'for': 'php' }
-Plug 'rayburgemeestre/phpfolding.vim', { 'for': 'php' }
+Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
+Plug 'rayburgemeestre/phpfolding.vim', {'for': 'php'}
 
 call plug#end()
 
