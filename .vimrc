@@ -35,11 +35,16 @@ Plug 'suan/vim-instant-markdown'
 Plug 'ap/vim-css-color'
 Plug 'jceb/vim-orgmode'
 Plug 'inkarkat/vim-SyntaxRange'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
 Plug 'rayburgemeestre/phpfolding.vim', {'for': 'php'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'reasonml-editor/vim-reason-plus', {'for': 'reason'}
 
 call plug#end()
 
@@ -121,16 +126,23 @@ let g:airline#extensions#branch_prefix#enabled=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 
+" REASONML
+let g:LanguageClient_serverCommands = {
+\ 'reason': ['/home/ludovic-gonthier/bin/rls-linux/reason-language-server']
+\ }
 
 " ALE - Configuration
+let g:ale_reason_ls_executable = '/home/ludovic-gonthier/bin/rls-linux/reason-language-server'
 let g:ale_linters = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
 \   'scss': ['stylelint'],
+\   'reason': ['merlin','reason-language-server'],
 \}
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
 \   'scss': ['stylelint'],
+\   'reason': ['refmt'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✗'
@@ -141,7 +153,7 @@ let g:ale_lint_delay = 1000
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 0
 let g:NERDTreeHighlightFoldersFullName = 0
-let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$', '.ctags']
+let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$', '\.bs\.js$', '.ctags']
 let g:NERDTreeShowHidden = 1
 
 " VIM DEVICONS - Configuration
@@ -150,9 +162,13 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
 let g:DevIconsEnableFoldersOpenClose = v:true
 let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
+
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols = {}
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['vendor'] = "\uf487"
 let g:WebDevIconsUnicodeDecorateFileNodesExactSymbols['node_modules'] = "\uf487"
+
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['re'] = "\ue781"
 
 " Omni completion configuration
 let g:omni_syntax_group_include_php = 'php\w\+'
