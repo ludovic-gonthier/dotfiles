@@ -35,6 +35,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'ap/vim-css-color'
 Plug 'jceb/vim-orgmode'
 Plug 'inkarkat/vim-SyntaxRange'
+Plug 'marene/nvm.vim'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -251,6 +252,9 @@ nmap <silent> <leader>e :NERDTreeToggle<CR><C-w>=
 nmap <silent> <leader>ef :NERDTreeFind<CR><C-w>=
 " " Remove current buffer and go to the previous one
 nmap <silent> <leader>bd :bp<CR>:bd#<CR>
+
+" " Open fugitive Gstatus in new tab with Glog
+nmap <leader>G :G<bar> wincmd T <bar> vsplit <bar> wincmd l <bar>+:Glog -n 100<CR>
 
 " " Compute the php-ctags
 nmap <leader>rt :AsyncRun! ctags -f .ctags --options=~/.config/php.config.ctags<CR>
