@@ -135,20 +135,10 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_lint_delay = 1000
 
-
-" GITGUTTER - Configuration
-let g:gitgutter_sign_added = '•'
-let g:gitgutter_sign_modified = '•'
-let g:gitgutter_sign_modified_removed = '•'
-let g:gitgutter_sign_removed = '•'
-let g:gitgutter_sign_removed_first_line = '•'
-
-
 " NERDTREE - Configuration
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 0
 let g:NERDTreeHighlightFoldersFullName = 0
-let g:NERDTreeSyntaxEnabledExtensions = ['css', 'js', 'jsx', 'twig', 'php', 'yaml', 'yml']
 let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
 let g:NERDTreeShowHidden = 1
 
