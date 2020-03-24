@@ -78,4 +78,7 @@ if [ ! -d ${HOME}/.vim/ultisnips-snippets ]; then
     ln -s $current_directory/.vim/ultisnips-snippets/ ${HOME}/.vim/ultisnips-snippets
 fi
 
+# Install COC plugins
+vim -c 'CocInstall -sync coc-json coc-html|q'
+
 echo "└ VIM - Installation complete"

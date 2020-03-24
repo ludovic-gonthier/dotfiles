@@ -39,6 +39,8 @@ Plug 'inkarkat/vim-SyntaxRange'
 Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
 Plug 'rayburgemeestre/phpfolding.vim', {'for': 'php'}
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 filetype plugin indent on
