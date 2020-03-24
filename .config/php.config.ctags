@@ -1,0 +1,15 @@
+-R
+--tag-relative=yes
+--languages=php
+--php-kinds=cift
+--exclude=*/Test/*
+--exclude=*/Tests/*
+--exclude=*test*
+--exclude=.cache/*
+--exclude=app/*
+--exclude=bin/*
+--exclude=tests/*
+--exclude=var/*
+--exclude=vendor/*/vendor
+--exclude=web/*
+--fields=+aimS

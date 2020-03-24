@@ -32,5 +32,3 @@ augroup PHPNamespace
     autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
     autocmd FileType php noremap <Leader>pe :call IPhpExpandClass()<CR>
 augroup END
-
-nmap <leader>rt :AsyncRun!  ctags -f .ctags<CR>

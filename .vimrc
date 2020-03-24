@@ -141,7 +141,7 @@ let g:ale_lint_delay = 1000
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 0
 let g:NERDTreeHighlightFoldersFullName = 0
-let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$']
+let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$', '.ctags']
 let g:NERDTreeShowHidden = 1
 
 " VIM DEVICONS - Configuration
@@ -235,6 +235,9 @@ nmap <silent> <leader>e :NERDTreeToggle<CR><C-w>=
 nmap <silent> <leader>ef :NERDTreeFind<CR><C-w>=
 " " Remove current buffer and go to the previous one
 nmap <silent> <leader>bd :bp<CR>:bd#<CR>
+
+" " Compute the php-ctags
+nmap <leader>rt :AsyncRun! ctags -f .ctags --options=~/.config/php.config.ctags<CR>
 
 " VIM - Custom commands
 augroup NERDTree
