@@ -1,4 +1,5 @@
 {
     "diagnostic.displayByAle": true,
+    "tsserver.npm": "/home/ludovic-gonthier/.nvm/versions/node/v10.16.3/bin/npm",
     "javascript.suggest.autoImports": true
 }
