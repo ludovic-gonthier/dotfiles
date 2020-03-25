@@ -257,7 +257,7 @@ nmap <silent> <leader>bd :bp<CR>:bd#<CR>
 nmap <leader>G :G<bar> wincmd T <bar> vsplit <bar> wincmd l <bar>+:Glog -n 100<CR>
 
 " " Compute the php-ctags
-nmap <leader>rt :AsyncRun! ctags -f .ctags --options=~/.config/php.config.ctags<CR>
+nmap <leader>rt :AsyncRun! ctags -f .ctags --options=$HOME/.config/php.config.ctags<CR>
 
 " VIM - Custom commands
 augroup NERDTree
