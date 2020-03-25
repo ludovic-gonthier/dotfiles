@@ -66,9 +66,16 @@ fi
 echo "├ Configuring"
 
 mkdir -p ${HOME}/.vim/bundle
+mkdir -p ${HOME}/.vim/autoload
 mkdir -p ${HOME}/.vim/undofiles
 
-
+if [ ! -d ${HOME}/.vim/autoload/plug.vim ]; then
+    echo "├── Installing Plugins"
+    wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+        -O ~/.vim/autoload/plug.vim
+        
+    vim +PlugInstall +qall
+fi
 if [ ! -d ${HOME}/.vim/ftplugin ]; then
     echo "├── Installing FileType Plugins"
     ln -s $current_directory/.vim/ftplugin/ ${HOME}/.vim/ftplugin
