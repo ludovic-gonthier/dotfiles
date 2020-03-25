@@ -15,6 +15,7 @@
     verbose = true
 [core]
     editor = vim +startinsert
+    pager = less -FRX
 [merge]
     tool = vimdiff
 [rebase]
