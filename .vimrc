@@ -222,6 +222,16 @@ function! ToggleList(bufname, pfx)
     endif
 endfunction
 
+function DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        if getbufvar(buf, '&mod') == 0
+            silent execute 'bwipeout' buf
+        endif
+    endfor
+endfunction
+
 " VIM - Global remap
 " " Center window vertically on next/previous search match
 noremap n nzz
@@ -258,6 +268,7 @@ nmap <silent> <leader>e :NERDTreeToggle<CR><C-w>=
 nmap <silent> <leader>ef :NERDTreeFind<CR><C-w>=
 " " Remove current buffer and go to the previous one
 nmap <silent> <leader>bd :bp<CR>:bd#<CR>
+nmap <silent> <leader>bo :call DeleteHiddenBuffers()<CR>
 
 " " Open fugitive Gstatus in new tab with Glog
 nmap <leader>G :G<bar> wincmd T <bar> vsplit <bar> wincmd l <bar>+:Glog -n 100<CR>
