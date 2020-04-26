@@ -4,7 +4,7 @@ IFS=$'\n'
 
 sudo apt-get install -y \
     autoconf \
-    python-pip \
+    python3-pip \
     stow \
     wget \
     zsh
