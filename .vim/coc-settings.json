@@ -1,5 +1,13 @@
 {
     "diagnostic.displayByAle": true,
     "tsserver.npm": "/home/ludovic-gonthier/.nvm/versions/node/v10.16.3/bin/npm",
-    "javascript.suggest.autoImports": true
+    "clangd.arguments": [
+        "--compile-commands-dir", "build",
+        "--header-insertion", "iwyu",
+        "--all-scopes-completion",
+        "--suggest-missing-includes"
+    ],
+    "javascript.suggest.autoImports": true,
+    "clangd.arguments": "--background-index --limit-results=20",
+    "clangd.semanticHighlighting": true
 }

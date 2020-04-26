@@ -73,6 +73,14 @@ install-tmux:
 install-vim:
 	@zsh ./install-scripts/vim.sh
 
+.PHONY: install-cpp-environment
+install-cpp-environment:
+	@sudo apt-get update
+	@sudo apt-get install cmake clang-format-10 clangd-10
+	@pip install conan
+	@sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-10 100
+	@sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-10 100
+
 .PHONY: replace-capslock-by-escape
 replace-capslock-by-escape:
 	@dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"

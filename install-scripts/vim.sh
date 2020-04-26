@@ -86,6 +86,6 @@ if [ ! -d ${HOME}/.vim/ultisnips-snippets ]; then
 fi
 
 # Install COC plugins
-vim -c 'CocInstall -sync coc-json coc-html coc-reason coc-tsserver|q'
+vim -c 'CocInstall -sync coc-json coc-html coc-reason coc-tsserver coc-clangd|q'
 
 echo "└ VIM - Installation complete"

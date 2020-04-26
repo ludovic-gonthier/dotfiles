@@ -40,6 +40,12 @@ Plug 'rayburgemeestre/phpfolding.vim', {'for': 'php'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'reasonml-editor/vim-reason-plus', {'for': 'reason'}
 
+Plug 'puremourning/vimspector', {
+\ 'do': './install_gadget.py --enable-c',
+\ 'for': 'cpp',
+\ }
+Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': 'cpp'}
+
 " For vim-orgmode
 Plug 'tpope/vim-speeddating', {'for': 'org'}
 Plug 'mattn/calendar-vim', {'for': 'org'}
@@ -154,7 +160,7 @@ let g:ale_lint_delay = 1000
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 0
 let g:NERDTreeHighlightFoldersFullName = 0
-let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$', '\.bs\.js$', '.ctags']
+let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$', '\.bs\.js$', '.ctags', '.clangd']
 let g:NERDTreeShowHidden = 1
 
 " VIM DEVICONS - Configuration
