@@ -49,7 +49,9 @@ endif
 
 
 " VIM - Global configuration
-set antialias
+if !has('nvim')
+    set antialias
+endif
 set autoindent
 set autowrite                     " Automatically :write before running commands
 set backspace=2
