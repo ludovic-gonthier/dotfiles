@@ -2,10 +2,10 @@
 set -e;
 set -x;
 
-version='8.0.1520'
+version='8.2.0508'
 source_directory=${HOME}/src/vim-${version}
 binary_file=${HOME}/bin/vim
-dataroot_directory=${HOME}/share/vim/vim80
+dataroot_directory=${HOME}/share/vim/vim-${version}
 
 current_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 dl=$current_directory/helper/download_unzip
@@ -73,7 +73,7 @@ if [ ! -d ${HOME}/.vim/autoload/plug.vim ]; then
     echo "├── Installing Plugins"
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
         -O ~/.vim/autoload/plug.vim
-        
+
     vim +PlugInstall +qall
 fi
 if [ ! -d ${HOME}/.vim/ftplugin ]; then
