@@ -40,6 +40,11 @@ Plug 'rayburgemeestre/phpfolding.vim', {'for': 'php'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'reasonml-editor/vim-reason-plus', {'for': 'reason'}
 
+" For vim-orgmode
+Plug 'tpope/vim-speeddating', {'for': 'org'}
+Plug 'mattn/calendar-vim', {'for': 'org'}
+Plug 'vim-scripts/utl.vim', {'for': 'org'}
+
 call plug#end()
 
 filetype plugin indent on
