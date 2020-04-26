@@ -276,6 +276,24 @@ nmap <leader>G :G<bar> wincmd T <bar> vsplit <bar> wincmd l <bar>+:Glog -n 100<C
 " " Compute the php-ctags
 nmap <leader>rt :AsyncRun! ctags -f .ctags --options=$HOME/.config/php.config.ctags<CR>
 
+set signcolumn=yes
+set shortmess+=c
+
+" COC.vim mapping
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Open complete window
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 " VIM - Custom commands
 augroup NERDTree
     " " Auto-start NERDTree if no file specify
@@ -285,6 +303,16 @@ augroup NERDTree
     autocmd FileType nerdtree setlocal nolist
 augroup END
 
+nmap <leader>qf  <Plug>(coc-fix-current)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
+endfunction
 " Wrapper arround fzf, setup ag to not ignore files
 :command! -nargs=0 FZFA
     \  execute ':let $FZF_DEFAULT_COMMAND_DEFAULT=$FZF_DEFAULT_COMMAND'
