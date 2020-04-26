@@ -18,6 +18,7 @@
     pager = less -FRX
 [merge]
     tool = vimdiff
+    ff = false
 [rebase]
     autosquash = true
 [sequence]
