@@ -76,14 +76,6 @@ if [ ! -d ${HOME}/.vim/autoload/plug.vim ]; then
 
     vim +PlugInstall +qall
 fi
-if [ ! -d ${HOME}/.vim/ftplugin ]; then
-    echo "├── Installing FileType Plugins"
-    ln -s $current_directory/.vim/ftplugin/ ${HOME}/.vim/ftplugin
-fi
-if [ ! -d ${HOME}/.vim/ultisnips-snippets ]; then
-    echo "├── Installing Snippets"
-    ln -s $current_directory/.vim/ultisnips-snippets/ ${HOME}/.vim/ultisnips-snippets
-fi
 
 # Install COC plugins
 vim -c 'CocInstall -sync coc-json coc-html coc-reason coc-tsserver coc-phpls coc-clangd|q'

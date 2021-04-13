@@ -14,6 +14,16 @@ let g:ale_fixers = {
 
 let s:cpp_build_dir = 'build'
 let s:cpp_sources_dir = 'application'
+let g:ale_c_clangformat_executable = '/home/ludovic-gonthier/src/llvm-project/build-llvm/bin/clang-format'
+"
+"    "languageserver": {
+"        "clangd": {
+"            "trace.server": "verbose",
+"            "args": ,
+"            "command": "/usr/bin/clangd",
+"            "filetypes": ["c", "cpp", "objc", "objcpp"]
+"        }
+"    },
 
 " VIM Inspector
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'

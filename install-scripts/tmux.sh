@@ -40,7 +40,7 @@ echo "├── Install TMUX plugins"
 
 mkdir -p ${HOME}/.tmux/plugins
 if [ ! -d ${HOME}/.tmux/plugins/tpm ]; then
-    git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+    git clone git@github.com:tmux-plugins/tpm.git ${HOME}/.tmux/plugins/tpm
 fi
 
 echo "└ TMUX - Installation complete"

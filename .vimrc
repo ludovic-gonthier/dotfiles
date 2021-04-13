@@ -46,6 +46,8 @@ Plug 'puremourning/vimspector', {
 \ }
 Plug 'jackguo380/vim-lsp-cxx-highlight', {'for': 'cpp'}
 
+Plug 'OmniSharp/omnisharp-vim', {'for': 'cs'}
+
 " For vim-orgmode
 Plug 'tpope/vim-speeddating', {'for': 'org'}
 Plug 'mattn/calendar-vim', {'for': 'org'}
@@ -166,7 +168,7 @@ let g:ale_lint_delay = 1000
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 0
 let g:NERDTreeHighlightFoldersFullName = 0
-let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$', '\.bs\.js$', '.ctags', '.clangd']
+let g:NERDTreeIgnore = ['\.git$', '\.swp$', '\.swo$', '\.bs\.js$', '.ctags', '.clangd', '.csproj']
 let g:NERDTreeShowHidden = 1
 
 " VIM DEVICONS - Configuration
@@ -309,7 +311,7 @@ augroup NERDTree
     autocmd FileType nerdtree setlocal nolist
 augroup END
 
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <localleader>f  <Plug>(coc-fix-current)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()

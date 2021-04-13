@@ -11,10 +11,10 @@ public:
 
 private:
   $1($1 const& other);
-  $1($1&& other);
+  $1($1&& other) noexcept;
 
   $1& operator=(const $1&);
-  $1& operator=($1&& other);
+  $1& operator=($1&& other) noexcept;
 };
 }
 endsnippet
