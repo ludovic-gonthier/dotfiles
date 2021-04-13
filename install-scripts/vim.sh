@@ -2,7 +2,7 @@
 set -e;
 set -x;
 
-version='8.2.0508'
+version='8.2.0520'
 source_directory=${HOME}/src/vim-${version}
 binary_file=${HOME}/bin/vim
 dataroot_directory=${HOME}/share/vim/vim-${version}
@@ -86,6 +86,6 @@ if [ ! -d ${HOME}/.vim/ultisnips-snippets ]; then
 fi
 
 # Install COC plugins
-vim -c 'CocInstall -sync coc-json coc-html coc-reason coc-tsserver coc-clangd|q'
+vim -c 'CocInstall -sync coc-json coc-html coc-reason coc-tsserver coc-phpls coc-clangd|q'
 
 echo "└ VIM - Installation complete"

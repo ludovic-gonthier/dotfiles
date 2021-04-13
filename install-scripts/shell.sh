@@ -24,6 +24,8 @@ echo "├── ZSH - OH-MY-ZSH - Installation start"
 if [ ! -d $source_directory ]; then
     echo "├────  Downloading sources"
     git clone git://github.com/robbyrussell/oh-my-zsh.git $source_directory
+    # Oh-My-Zsh plugins
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 else
     echo "├────  Already installed"
 fi

@@ -71,7 +71,7 @@ install-tmux:
 
 .PHONY: install-vim
 install-vim:
-	@zsh ./install-scripts/vim.sh
+	@zsh ./install-scripts/neovim.sh
 
 .PHONY: install-cpp-environment
 install-cpp-environment:

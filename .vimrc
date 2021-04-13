@@ -63,11 +63,13 @@ endif
 if !has('nvim')
     set antialias
 endif
+
 set autoindent
 set autowrite                     " Automatically :write before running commands
 set backspace=2
 set backspace=indent,eol,start
 set clipboard=unnamed             " For OSX clipboard
+set cmdheight=2
 set completeopt+=preview
 set cursorline                    " Highlight current line
 set encoding=utf-8                " UTF-8 is the encoding you want for your files
@@ -89,11 +91,14 @@ set relativenumber                " Set relative number for fast dd/yy
 set ruler                         " Display ruler
 set shell=zsh
 set shiftwidth=4 " when indenting with '>', use 4 spaces width
+set shortmess+=c
 set showcmd                       " Show commands
 set showmatch                     " Highlight matching [{()}]
 set showmode                      " Show mode -- INSERT --
+set signcolumn=yes
 set tags+=.ctags
 set tabstop=4 " show existing tab with 4 spaces width
+set tags+=.ctags
 set ttyfast
 set undodir=~/.vim/undofiles      " Do not add ~un files everywhere I go
 set undofile                      " Persistent undo
@@ -156,6 +161,7 @@ let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 let g:ale_lint_delay = 1000
 
+
 " NERDTREE - Configuration
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeHighlightFolders = 0
@@ -181,6 +187,8 @@ let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['re'] = "\ue781"
 let g:omni_syntax_group_include_php = 'php\w\+'
 setlocal omnifunc=syntaxcomplete#Complete
 
+" FUGITIVE - configuration
+let g:fugitive_pty = 0
 
 " SNIPPETS - Configuration
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -276,8 +284,6 @@ nmap <leader>G :G<bar> wincmd T <bar> vsplit <bar> wincmd l <bar>+:Glog -n 100<C
 " " Compute the php-ctags
 nmap <leader>rt :AsyncRun! ctags -f .ctags --options=$HOME/.config/php.config.ctags<CR>
 
-set signcolumn=yes
-set shortmess+=c
 
 " COC.vim mapping
 " GoTo code navigation.
@@ -322,4 +328,10 @@ endfunction
 
 if exists("g:loaded_webdevicons")
     call webdevicons#refresh()
+endif
+
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
 endif
