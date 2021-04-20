@@ -54,6 +54,8 @@ Plug 'mattn/calendar-vim', {'for': 'org'}
 Plug 'vim-scripts/utl.vim', {'for': 'org'}
 
 Plug 'vimwiki/vimwiki'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 
 call plug#end()
 
