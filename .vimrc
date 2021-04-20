@@ -53,6 +53,8 @@ Plug 'tpope/vim-speeddating', {'for': 'org'}
 Plug 'mattn/calendar-vim', {'for': 'org'}
 Plug 'vim-scripts/utl.vim', {'for': 'org'}
 
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 filetype plugin indent on
@@ -203,6 +205,13 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/ultisnips-snippets']
 nnoremap <silent> <leader>f :FZF<CR>
 nnoremap <silent> <leader>r :FZFA<CR>
 
+" VimWiki
+let g:vimwiki_list = [
+\  {'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.wiki'},
+\  {'path': '~/playground/formation-yoga/', 'syntax': 'markdown', 'ext': '.md'}
+\]
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_ext2syntax = {'.wiki': 'markdown', '.md': 'markdown'}
 
 " VIM - Custom functions
 function! GetBufferList()

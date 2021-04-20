@@ -2,8 +2,7 @@
     "diagnostic.displayByAle": true,
     "javascript.suggest.autoImports": true,
     "tsserver.npm": "/home/ludovic-gonthier/.nvm/versions/node/v12.14.0/bin/npm",
-    "clangd.semanticHighlighting": true
-    "diagnostic.locationlist": true,
+    "clangd.semanticHighlighting": true,
     "diagnostic.separateRelatedInformationAsDiagnostics": true,
     "languageserver": {
         "clangd": {
@@ -27,6 +26,5 @@
             "command": "/home/ludovic-gonthier/.cache/omnisharp-vim/omnisharp-roslyn/run",
             "filetypes": ["cs"]
         }
-    },
-    "omnisharp.useDotnet": false
+    }
 }
