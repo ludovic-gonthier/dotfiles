@@ -1,3 +1,7 @@
 snippet i
 import $1 from '$2';
 endsnippet
+
+snippet ed "export default filename"
+export default `!v expand('%:t:r:s?')`;
+endsnippet
