@@ -25,6 +25,47 @@
             ],
             "command": "/home/ludovic-gonthier/.cache/omnisharp-vim/omnisharp-roslyn/run",
             "filetypes": ["cs"]
+        },
+        "psalmls": {
+            "args": [
+                "--enable-autocomplete",
+                "--find-dead-code"
+            ],
+            "command": "vendor/bin/psalm-language-server",
+            "filetypes": ["php"],
+            "requireRootPattern": true,
+            "rootPatterns": ["psalm.xml", "psalm.xml.dist"],
+            "trace.server": "verbose"
+        },
+        "intelephense": {
+            "enable": true,
+            "command": "intelephense",
+            "args": ["--stdio"],
+            "filetypes": ["php"],
+            "initializationOptions": {
+                "storagePath": "/tmp/intelephense"
+            }
+        }
+    },
+    "settings": {
+        "intelephense": {
+            "completion": {
+                "insertUseDeclaration": true,
+                "fullyQualifyGlobalConstantsAndFunctions": false,
+                "triggerParameterHints": true,
+                "maxItems": 15
+            },
+            "files": {
+                "maxSize": 1000000,
+                "associations": ["*.php", "*.phtml"]
+            },
+            "format": {
+                "enable": true
+            },
+            "licenseKey": "00FTPSCN8ODXLIC"
+        },
+        "tsserver": {
+            "log": "verbose"
         }
     }
 }

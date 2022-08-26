@@ -1,10 +1,9 @@
 # List of docker's aliases
-alias dc="docker-compose"
-alias dcb="docker-compose build"
-alias dcd="docker-compose down"
-alias dce="docker-compose exec"
-alias dcr="docker-compose run"
-alias dcu="docker-compose up"
+alias dcb="dc build"
+alias dcd="dc down"
+alias dce="dc exec"
+alias dcr="dc run"
+alias dcu="dc up"
 
 if [ -f "$HOME/.aliases.local" ] ; then
     source "$HOME/.aliases.local"

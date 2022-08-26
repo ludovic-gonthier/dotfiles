@@ -24,7 +24,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf'
-Plug 'suan/vim-instant-markdown'
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'ap/vim-css-color'
 Plug 'jceb/vim-orgmode'
 Plug 'inkarkat/vim-SyntaxRange'
@@ -33,6 +33,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'powerman/vim-plugin-AnsiEsc'
 
 Plug 'arnaud-lb/vim-php-namespace', {'for': 'php'}
 Plug 'rayburgemeestre/phpfolding.vim', {'for': 'php'}
@@ -292,7 +293,7 @@ nmap <silent> <leader>bd :bp<CR>:bd#<CR>
 nmap <silent> <leader>bo :call DeleteHiddenBuffers()<CR>
 
 " " Open fugitive Gstatus in new tab with Glog
-nmap <leader>G :G<bar> wincmd T <bar> vsplit <bar> wincmd l <bar>+:Glog -n 100<CR>
+nmap <leader>G :G<bar> wincmd T <bar> vsplit <bar> wincmd l <bar>+:Gclog -n 100<CR>
 
 " " Compute the php-ctags
 nmap <leader>rt :AsyncRun! ctags -f .ctags --options=$HOME/.config/php.config.ctags<CR>
@@ -304,6 +305,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+"
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 

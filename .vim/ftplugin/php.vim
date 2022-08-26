@@ -22,6 +22,13 @@ let g:php_sql_query = 0
 let g:php_sql_heredoc = 0
 let g:php_sql_nowdoc = 0
 
+" "
+" "phplang": {
+"     "rootPatterns": ["composer.json"],
+"     "command": "php",
+"     "args": ["/home/ludovic-gonthier/src/php-language-server/bin/php-language-server.php"],
+"     "filetypes": ["php"]
+" }
 
 function! IPhpExpandClass()
     call PhpExpandClass()
@@ -31,4 +38,9 @@ endfunction
 augroup PHPNamespace
     autocmd FileType php noremap <Leader>pu :call PhpInsertUse()<CR>
     autocmd FileType php noremap <Leader>pe :call IPhpExpandClass()<CR>
+augroup END
+
+augroup PHP
+    autocmd!
+    autocmd FileType php setlocal iskeyword-=$
 augroup END

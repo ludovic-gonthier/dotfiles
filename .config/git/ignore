@@ -1,4 +1,6 @@
 .ctags/
+**/.ctags
+**/.php_cs.cache
 .cache
 **/*.sw*
 **/*.orig
@@ -6,6 +8,7 @@ TODO.md
 TODO.org
 IDEA.md
 .idea
+tsconfig.json
 
 .nvmrc
 .vimspector.json
