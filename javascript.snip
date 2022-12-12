@@ -1,0 +1,71 @@
+snippet i
+    import $1 from '$2';
+
+snippet ed
+    export default ${TM_FILENAME_BASE};
+
+snippet test
+    import ${TM_FILENAME/(.*).test..+$/$1/} from './${TM_FILENAME/(.*).test..+$/$1/}';
+
+    describe('${TM_FILENAME/(.*).test..+$/$1/}', () => {
+      ${2}
+    });
+
+snippet de
+    describe('${1}', () => {
+      ${2}
+    });
+
+snippet it
+    it('${1}', () => {
+      ${2}
+    });
+
+snippet ball
+    beforeAll(() => {
+      ${1}
+    });
+
+snippet aall
+    afterAll(() => {
+      ${1}
+    });
+
+snippet beach
+    beforeEach(() => {
+      ${1}
+    });
+
+snippet aeach
+    afterEach(() => {
+      ${1}
+    });
+
+
+snippet rtest
+    import React from 'react';
+    import renderer from 'react-test-renderer';
+
+    import ${TM_FILENAME/(.*).test..+$/$1/} from './${TM_FILENAME/(.*).test..+$/$1/}';
+
+    describe('${TM_FILENAME/(.*).test..+$/$1/}', () => {
+      let component;
+      beforeAll(() => {
+        renderer.act(() => {
+          component = renderer.create(<${TM_FILENAME/(.*).test..+$/$1/}/>);
+        });
+      });
+
+      ${2}
+    });
+
+snippet rcre
+    renderer.create(<${1}/>);
+
+snippet ract
+    renderer.act(() => {
+      ${1}
+    });
+
+snippet mock
+    jest.mock('${1}', () => ${2});

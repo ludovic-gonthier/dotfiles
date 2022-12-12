@@ -26,7 +26,7 @@ echo "├── Configuring sources"
 cd $source_directory
 make distclean
 echo "├── Compiling sources"
-make CMAKE_INSTALL_PREFIX=$HOME/src/neovim install
+make CMAKE_INSTALL_PREFIX=$HOME/src/neovim CMAKE_BUILD_TYPE=RelWithDebInfo install
 if [ -x $binary_file ]; then
     rm ${binary_file}
 fi
@@ -35,17 +35,12 @@ cd -
 
 echo "├ Configuring"
 
-mkdir -p ${HOME}/.vim/bundle
 mkdir -p ${HOME}/.vim/autoload
 mkdir -p ${HOME}/.vim/undofiles
 
-if [ ! -d ${HOME}/.vim/autoload/plug.vim ]; then
-    echo "├── Installing Plugins"
-    wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-        -O ~/.vim/autoload/plug.vim
+echo "├── Installing Plugins"
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
-    vim +PlugInstall +qall
-fi
 if [ ! -d ${HOME}/.vim/ftplugin ]; then
     echo "├── Installing FileType Plugins"
     ln -s $current_directory/.vim/ftplugin/ ${HOME}/.vim/ftplugin
