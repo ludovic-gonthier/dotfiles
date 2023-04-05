@@ -2,7 +2,7 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-    ensure_installed = { 'html', 'jsonls', 'tsserver', 'sumneko_lua' }
+    ensure_installed = { 'html', 'jsonls', 'tsserver' }
 })
 
 require('lsp_signature').setup({
@@ -104,10 +104,6 @@ require('lspconfig')['html'].setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
     flags = lsp_flags,
 }))
-require('lspconfig')['sumneko_lua'].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
-    flags = lsp_flags,
-}))
 require('lspconfig')['tsserver'].setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
     flags = lsp_flags,
@@ -119,6 +115,12 @@ require('lspconfig')['tsserver'].setup(coq.lsp_ensure_capabilities({
 require('lspconfig')['jsonls'].setup(coq.lsp_ensure_capabilities({
     on_attach = on_attach,
     flags = lsp_flags,
+}))
+
+require('lspconfig')['psalm'].setup(coq.lsp_ensure_capabilities({
+    on_attach = on_attach,
+    flags = lsp_flags,
+    cmd = {'/home/ludovic-gonthier/.config/composer/vendor/vimeo/psalm/psalm-language-server'},
 }))
 
 require('lspconfig')['intelephense'].setup(coq.lsp_ensure_capabilities({
