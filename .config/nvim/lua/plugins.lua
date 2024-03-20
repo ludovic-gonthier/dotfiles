@@ -109,18 +109,11 @@ return require('packer').startup(function(use)
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'ray-x/lsp_signature.nvim',
-        {
-            'ms-jpq/coq_nvim',
-            branch = 'coq',
-            -- commit = '84ec5faf2aaf49819e626f64dd94f4e71cf575bc',
-            run = { ':COQdeps', ':COQsnips compile'},
-        },
-        { 'ms-jpq/coq.artifacts', branch = 'artifacts' },
-        { 'ms-jpq/coq.thirdparty', branch = '3p' },
-        {
-            'neovim/nvim-lspconfig',
-            wants = { 'lsp_signature.nvim', 'coq_nvim' },
-        },
+        'neovim/nvim-lspconfig',
+        'hrsh7th/nvim-cmp', -- Autocompletion plugin
+        'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+        'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
+        'L3MON4D3/LuaSnip', -- Snippets plugin
     }
     -- Fuzzy finder
     use {
