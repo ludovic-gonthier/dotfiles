@@ -1,5 +1,5 @@
 -- Configuration for ryanoasis/vim-devicons
-vim.g.WebDevIconsNerdTreeBeforeGlyphPadding = ''
+vim.g.WebDevIconsNerdTreeBeforeGlyphPadding = ' '
 vim.g.WebDevIconsUnicodeDecorateFolderNodes = true
 vim.g.DevIconsEnableFoldersOpenClose = true
 vim.g.NERDTreeDirArrowExpandable = ' '

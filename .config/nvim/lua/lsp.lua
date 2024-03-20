@@ -64,6 +64,10 @@ local on_attach = function(client, bufnr)
         end
     })
 end
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = on_attach,
+})
 
 -- UI
 --  Change diagnostic symbols in gutter
@@ -101,11 +105,9 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 require('lspconfig')['html'].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
     flags = lsp_flags,
 }))
 require('lspconfig')['tsserver'].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
     flags = lsp_flags,
     -- Server-specific settings...
     settings = {
@@ -113,18 +115,15 @@ require('lspconfig')['tsserver'].setup(coq.lsp_ensure_capabilities({
     }
 }))
 require('lspconfig')['jsonls'].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
     flags = lsp_flags,
 }))
 
-require('lspconfig')['psalm'].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
+require('lspconfig')['psalm'].setup({
     flags = lsp_flags,
     cmd = {'/home/ludovic-gonthier/.config/composer/vendor/vimeo/psalm/psalm-language-server'},
-}))
+})
 
 require('lspconfig')['intelephense'].setup(coq.lsp_ensure_capabilities({
-    on_attach = on_attach,
     flags = lsp_flags,
     settings = {
         intelephense = {

@@ -17,7 +17,9 @@
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [[ ! $TERM =~ screen ]]; then
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+
+if [[ ! $TERM =~ tmux ]]; then
     exec tmux
 fi
 
@@ -41,5 +43,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Disable TrackPoint on Lenovo
+xinput set-prop "TPPS/2 ALPS TrackPoint" "Device Enabled" 0
 
 eval "$(direnv hook zsh)"

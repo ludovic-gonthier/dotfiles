@@ -67,10 +67,6 @@ set('n', '<leader>=', '<C-w>=')
 set('n', '<leader>-', ':split<CR>')
 -- Split vertically
 set('n', '<leader>|', ':vsplit<CR>')
--- Toggle NERDTree
-set('n', '<leader>e', ':NERDTreeToggle<CR><C-w>=', {silent = true})
--- Find current file in NERDTree
-set('n', '<leader>ef', ':NERDTreeFind<CR><C-w>=', {silent = true})
 -- Remove current buffer and go to the previous one
 set('n', '<leader>bd', ':bp<CR>:bd#<CR>', {silent = true})
 --nmap <silent> <leader>bo :call DeleteHiddenBuffers()<CR>

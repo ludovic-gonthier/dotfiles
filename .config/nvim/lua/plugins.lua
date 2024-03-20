@@ -12,19 +12,22 @@ end
 -- Auto compile when there are changes in plugins.lua
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
-local packer_bootstrap = ensure_packer()return require('packer').startup(function(use)
+local packer_bootstrap = ensure_packer()
+
+return require('packer').startup(function(use)
     use {'wbthomason/packer.nvim'}
 
     use 'dense-analysis/ale'
     -- ColorScheme
-    use 'jnurmine/zenburn'
+    --use 'jnurmine/zenburn'
+    use "EdenEast/nightfox.nvim"
 
     use 'powerman/vim-plugin-AnsiEsc' -- Don't know where it is used
 
     -- Syntaxt Highlight
     use {
-        -- 'sheerun/vim-polyglot' -- Maybe exchange for TreeSitter instead?
         { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+        { 'nvim-treesitter/nvim-treesitter-context' },
         {
             "tree-sitter/tree-sitter-php",
             run = ":TSInstall php",
@@ -67,7 +70,6 @@ local packer_bootstrap = ensure_packer()return require('packer').startup(functio
 
     -- Misc
     use {
-        'editorconfig/editorconfig-vim',
         'nelstrom/vim-visual-star-search',
         'tpope/vim-commentary',
         'tpope/vim-unimpaired',
@@ -95,7 +97,6 @@ local packer_bootstrap = ensure_packer()return require('packer').startup(functio
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icons
         },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
     use {
@@ -124,7 +125,11 @@ local packer_bootstrap = ensure_packer()return require('packer').startup(functio
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
-        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        requires = {
+            {'nvim-lua/popup.nvim'},
+            {'nvim-lua/plenary.nvim'},
+            {'xiyaowong/telescope-emoji.nvim'}
+        }
     }
 
     -- CPP --
@@ -168,6 +173,10 @@ local packer_bootstrap = ensure_packer()return require('packer').startup(functio
     use {
         'rayburgemeestre/phpfolding.vim',
         ft={'php'}
+    }
+    use {
+        'scrooloose/vim-slumlord',
+        requires={'aklt/plantuml-syntax'}
     }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

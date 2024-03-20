@@ -26,9 +26,11 @@ require('telescope').setup({
         mappings = {
             i = {
                 ["<C-t>"] = require("trouble.providers.telescope").smart_open_with_trouble,
+                ["<C-q>"] = require('telescope.actions').smart_send_to_qflist,
             },
             n = {
                 t = require("trouble.providers.telescope").smart_open_with_trouble,
+                q = require('telescope.actions').smart_send_to_qflist,
             },
         },
 	},
@@ -69,3 +71,4 @@ require('telescope').setup({
 		},
 	},
 })
+require('telescope').load_extension("emoji")

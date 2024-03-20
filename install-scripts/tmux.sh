@@ -1,40 +1,42 @@
 #!/usr/bin/env bash
 set -e;
 
-version='2.6'
+version='3.3'
 binary_file=${HOME}/bin/tmux
-source_directory=${HOME}/src/tmux-${version}
+source_directory=${HOME}/src/tmux
 
 current_directory="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 echo "┌ TMUX - Installation start"
 if [ ! -d $source_directory ]; then
     echo "├── Downloading source"
-    $current_directory/helper/download_unzip https://github.com/tmux/tmux/archive/$version.zip ~/src/
-else
-    echo "├── Existing sources"
+    git clone https://github.com/tmux/tmux.git ${source_directory}
 fi
+
+cd $source_directory
+
+echo "├── Updating sources"
+git fetch --all
+git reset --hard tags/${version}
 
 echo "├── Prerequisites for TMUX"
 sudo apt-get install -y \
     autoconf \
     libevent-dev \
     libncurses-dev \
-    pkg-config
+    pkg-config \
+    build-essential \
+    bison
 
-echo "├ TMUX sources: $source_directory"
+echo "├ TMUX source director: $source_directory"
 
-if [ ! -x $binary_file ]; then
-    echo "├── Configuring sources"
-    cd $source_directory
-    sh autogen.sh
-    ./configure --prefix=${HOME}
-    echo "├── Compiling sources"
-    make && make install
-    cd -
-else
-    echo "├── Existing executable"
-fi
+echo "├── Configuring sources"
+sh autogen.sh
+./configure --prefix=${HOME}
+echo "├── Compiling sources"
+make && make install
+
+cd -
 
 echo "├── Install TMUX plugins"
 

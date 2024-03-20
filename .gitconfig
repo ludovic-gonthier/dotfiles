@@ -12,6 +12,10 @@
     undo = reset --hard HEAD^
     cleanup = "!git branch --merged | grep  -v '\\*\\|master' | grep -v '\\*\\|develop' | xargs -n 1 git branch -d"
     please = git push --force-with-lease
+[branch]
+    sort = -committerdate
+[column]
+    ui = auto
 [commit]
     verbose = true
 [core]
@@ -29,3 +33,7 @@
 [user]
     name = Ludovic Gonthier
     email = gonthier.ludovic@gmail.com
+[rerere]
+	enabled = true
+[maintenance]
+	repo = /home/ludovic-gonthier/playground/dotfiles

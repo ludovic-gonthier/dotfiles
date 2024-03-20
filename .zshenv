@@ -16,6 +16,7 @@ export LC_ALL="en_US.UTF-8"
 export NVM_DIR="$HOME/.nvm"
 
 export PATH="/usr/local/sbin"
+export PATH="$PATH:${HOME}/src/neovim/bin"
 export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:/usr/sbin"
 export PATH="$PATH:/usr/bin"
@@ -25,6 +26,7 @@ export PATH="$PATH:/usr/games"
 export PATH="$PATH:/usr/local/games"
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:./vendor/bin"
+export PATH="$PATH:$NVM_BIN"
 
 export ZSH=${HOME}/.oh-my-zsh
 export ZSH_THEME="agnoster"
