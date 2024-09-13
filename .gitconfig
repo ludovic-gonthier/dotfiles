@@ -19,7 +19,7 @@
 [commit]
     verbose = true
 [core]
-    editor = vim +startinsert
+    editor = nvim +startinsert
     pager = less -FRX
 [merge]
     tool = vimdiff
@@ -27,7 +27,7 @@
 [rebase]
     autosquash = true
 [sequence]
-    editor = vim
+    editor = nvim
 [tag]
     sort = version:refname
 [user]
@@ -37,3 +37,4 @@
 	enabled = true
 [maintenance]
 	repo = /home/ludovic-gonthier/playground/dotfiles
+	repo = /home/ludovic-gonthier/workstation/Mediapart/mediapart

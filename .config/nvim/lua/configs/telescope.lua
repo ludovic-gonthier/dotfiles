@@ -25,11 +25,11 @@ require('telescope').setup({
 		vimgrep_arguments = vimgrep_arguments,
         mappings = {
             i = {
-                ["<C-t>"] = require("trouble.providers.telescope").smart_open_with_trouble,
+                ["<C-t>"] = require("trouble.sources.telescope").open,
                 ["<C-q>"] = require('telescope.actions').smart_send_to_qflist,
             },
             n = {
-                t = require("trouble.providers.telescope").smart_open_with_trouble,
+                t = require("trouble.sources.telescope").open,
                 q = require('telescope.actions').smart_send_to_qflist,
             },
         },

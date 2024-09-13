@@ -63,6 +63,11 @@ return require('packer').startup(function(use)
             run = ":TSInstall html",
             requires = 'nvim-treesitter/nvim-treesitter'
         },
+        {
+            "tree-sitter-grammars/tree-sitter-markdown",
+            run = { ":TSInstall markdown", ":TSInstall markdown_inline", },
+            requires = 'nvim-treesitter/nvim-treesitter'
+        },
     }
 
     -- Wiki
@@ -101,7 +106,9 @@ return require('packer').startup(function(use)
 
     use {
         'folke/trouble.nvim',
-        requires = "kyazdani42/nvim-web-devicons",
+        requires = {
+            "kyazdani42/nvim-web-devicons",
+        },
     }
 
     -- LSP - The order here is important --
@@ -112,6 +119,7 @@ return require('packer').startup(function(use)
         'neovim/nvim-lspconfig',
         'hrsh7th/nvim-cmp', -- Autocompletion plugin
         'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+        'hrsh7th/cmp-buffer', -- buffer source for nvim-cmp
         'saadparwaiz1/cmp_luasnip', -- Snippets source for nvim-cmp
         'L3MON4D3/LuaSnip', -- Snippets plugin
     }

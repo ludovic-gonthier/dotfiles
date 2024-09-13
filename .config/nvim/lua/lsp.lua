@@ -2,7 +2,7 @@
 require("mason").setup()
 
 require("mason-lspconfig").setup({
-    ensure_installed = { 'html', 'jsonls', 'tsserver' }
+    ensure_installed = { 'html', 'jsonls', 'ts_ls' }
 })
 
 require('lsp_signature').setup({
@@ -87,12 +87,12 @@ lspconfig['html'].setup({
     capabilities = capabilities,
     flags = lsp_flags,
 })
-lspconfig['tsserver'].setup({
+lspconfig['ts_ls'].setup({
     capabilities = capabilities,
     flags = lsp_flags,
     -- Server-specific settings...
     settings = {
-      ["tsserver"] = {}
+      ["ts_ls"] = {}
     },
 })
 lspconfig['jsonls'].setup({
@@ -188,6 +188,7 @@ cmp.setup {
   }),
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'buffer' },
     { name = 'luasnip' },
   },
 }
