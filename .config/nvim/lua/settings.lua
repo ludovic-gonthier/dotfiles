@@ -55,6 +55,9 @@ vim.g.omni_syntax_group_include_php = 'php\\w\\+'
 vim.opt.listchars = { eol = '¬', extends = '>', nbsp = '•', precedes = '<', tab = '▸ ', trail = '·' }
 vim.opt.diffopt = vim.opt.diffopt + 'linematch:50'
 
+vim.opt.spell = true
+vim.opt.spelllang = { 'en', 'fr' }
+
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     pattern = "*.json",
     command = "set filetype=json"

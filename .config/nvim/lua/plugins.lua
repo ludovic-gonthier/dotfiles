@@ -150,11 +150,7 @@ return require('packer').startup(function(use)
     }
 
     -- Markdown --
-    use {
-        'instant-markdown/vim-instant-markdown',
-        ft = {'md'},
-        run = 'yarn install'
-    }
+    use {"ellisonleao/glow.nvim", config = function() require("glow").setup() end}
 
     -- Org Mode --
     use {

@@ -13,28 +13,75 @@
     cleanup = "!git branch --merged | grep  -v '\\*\\|master' | grep -v '\\*\\|develop' | xargs -n 1 git branch -d"
     please = git push --force-with-lease
 [branch]
-    sort = -committerdate
+    sort = committerdate
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [column]
     ui = auto
 [commit]
     verbose = true
 [core]
     editor = nvim +startinsert
-    pager = less -FRX
+    excludesfile = ~/.gitignore
+    fsmonitor = true
+    untrackedCache = true
+	; pager = diff-so-fancy | less --tabs=4 -RF
+[diff]
+    colorMoved = true
+    algorithm = histogram
+[feature]
+    experimental = true
+[fetch]
+    prune = true
+    pruneTags = true
+    all = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[grep]
+    patternType = perl
+; [interactive]
+; 	diffFilter = diff-so-fancy --patch
+[maintenance]
+	repo = /home/ludovic-gonthier/playground/dotfiles
+	repo = /home/ludovic-gonthier/workstation/Mediapart/mediapart
+	repo = /home/ludovic-gonthier/workstation/Mediapart/mediapart-mobile-app
 [merge]
+    conflicstyle = zdiff3
     tool = vimdiff
     ff = false
+[push]
+    autoSetupRemote = true
+    default = simple
 [rebase]
-    autosquash = true
+    autoSquash = true
+    autoStash = true
+    updateRefs = true
+; Re-apply conflit resolution over rebase
+[rerere]
+	enabled = true
+    autoupdate = true
 [sequence]
     editor = nvim
 [tag]
     sort = version:refname
+[trailer "changeid"]
+	key = Change-Id
 [user]
     name = Ludovic Gonthier
     email = gonthier.ludovic@gmail.com
-[rerere]
-	enabled = true
-[maintenance]
-	repo = /home/ludovic-gonthier/playground/dotfiles
-	repo = /home/ludovic-gonthier/workstation/Mediapart/mediapart
